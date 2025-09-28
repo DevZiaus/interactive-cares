@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-2 sm:p-4 md:p-8 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-4 sm:p-6 md:p-10 rounded-lg shadow-xl w-full max-w-4xl mx-2 sm:mx-4 md:mx-auto">
+
+        <header class="mb-4 sm:mb-6 border-b pb-4">
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">Student Registration Form</h1>
+            <p class="text-xs sm:text-sm text-gray-600 mt-1">Please enter relevant information</p>
+        </header>
+
+        <form action="#" method="POST" class="space-y-4 sm:space-y-6">
+
+            <p class="text-red-500 text-sm italic">* Mandatory Field</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-x-12">
+
+                <div class="space-y-6">
+
+                    <div>
+                        <label for="district" class="block text-sm font-medium text-gray-700">District (Institute District: Where you want to do your course)*</label>
+                        <select id="district" name="district" required class="district-select mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                            <option selected disabled>--Select One--</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="course" class="block text-sm font-medium text-gray-700">Course*</label>
+                        <select id="course" name="course" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                            <option selected disabled>--Select One--</option>
+                            <option value="Computer Science">Computer Science & Engineering</option>
+                            <option value="Electrical Engineering">Electrical & Electronic Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Software Development">Software Development (e.g., Web, Mobile)</option>
+                            <option value="Data Science">Data Science & Analytics</option>
+                            <option value="Business Administration">Business Administration (BBA/MBA)</option>
+                            <option value="Accounting">Accounting & Finance</option>
+                            <option value="Marketing">Marketing & Communication</option>
+                            <option value="Economics">Economics</option>
+                            <option value="Law">Law (LLB/LLM)</option>
+                            <option value="Medicine">Medicine (MBBS/MD)</option>
+                            <option value="Nursing">Nursing & Healthcare</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="English Literature">English Literature</option>
+                            <option value="Journalism">Journalism & Media Studies</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="Graphic Design">Graphic Design & Multimedia</option>
+                            <option value="Culinary Arts">Culinary Arts & Hospitality</option>
+                            <option value="Agriculture">Agriculture</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="student_name" class="block text-sm font-medium text-gray-700">Student Name*</label>
+                        <input type="text" name="student_name" id="student_name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+
+                    <div>
+                        <label for="father_name" class="block text-sm font-medium text-gray-700">Father Name*</label>
+                        <input type="text" name="father_name" id="father_name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+
+                    <div>
+                        <label for="mother_name" class="block text-sm font-medium text-gray-700">Mother Name*</label>
+                        <input type="text" name="mother_name" id="mother_name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Date of Birth*</label>
+                        <div class="mt-1 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <div class="flex-1">
+                               <label for="dob-day" class="sr-only">Day:</label>
+                                <select id="dob-day" name="dob_day" required class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                                    <option value="" selected disabled>Day</option>
+                                </select> 
+                            </div>
+                            <div class="flex-1">
+                                <label for="dob_month" class="sr-only">Month</label>
+                                <select id="dob_month" name="dob_month" required class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                                    <option selected disabled>Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="flex-1">
+                                <label for="dob-year" class="sr-only">Year:</label>
+                                <select id="dob-year" name="dob_year" required class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                                    <option value="" selected disabled>Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-1">
+                        <span class="block text-sm font-medium text-gray-700">Gender*</span>
+                        <div class="mt-2 space-y-2 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="male" class="form-radio h-4 w-4 text-indigo-600 border-gray-300" required>
+                                <span class="ml-2 text-sm text-gray-700">Male</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="female" class="form-radio h-4 w-4 text-indigo-600 border-gray-300">
+                                <span class="ml-2 text-sm text-gray-700">Female</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="block text-sm font-medium text-gray-700">Physically Handicapped*</span>
+                        <div class="mt-2 space-y-2 sm:space-y-0 sm:space-x-6 flex flex-col sm:flex-row">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="handicapped" value="yes" class="form-radio h-4 w-4 text-indigo-600 border-gray-300" required>
+                                <span class="ml-2 text-sm text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="handicapped" value="no" class="form-radio h-4 w-4 text-indigo-600 border-gray-300">
+                                <span class="ml-2 text-sm text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email*</label>
+                        <input type="email" name="email" id="email" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                        <p class="mt-1 text-xs text-gray-500">(e.g: example@mail.com)</p>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone (Must be 11 Digits)*</label>
+                        <input type="tel" name="phone" id="phone" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                        <p class="mt-1 text-xs text-gray-500">(e.g: 0155123456)</p>
+                    </div>
+
+                </div>
+
+                <div class="space-y-6">
+
+                    <div>
+                        <label for="identification_type" class="block text-sm font-medium text-gray-700">Identification Type</label>
+                        <select id="identification_type" name="identification_type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                            <option selected disabled>Select One</option>
+                            <option value="NID">National ID Card (NID)</option>
+                            <option value="Passport">Passport</option>
+                            <option value="Driving License">Driving License</option>
+                            <option value="Birth Certificate">Birth Registration Certificate</option>
+                            <option value="Social Security Number">Social Security Card / Number</option>
+                            <option value="Voter ID">Voter ID Card</option>
+                            <option value="Tax ID">Tax Identification Number (TIN)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="identification_no" class="block text-sm font-medium text-gray-700">Identification No. (Must be 10 digits for new NID or 17 digits for old NID. If your National ID is 13 digits, then please add your birth year with the ID as prefix. Example: 19800000000000000)*</label>
+                        <input type="text" name="identification_no" id="identification_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+
+                    <div>
+                        <label for="home_district" class="block text-sm font-medium text-gray-700">Home District*</label>
+                        <select id="home_district" name="home_district" required class="district-select mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="upazila" class="block text-sm font-medium text-gray-700">Upazila*</label>
+                        <select id="upazila" name="upazila" required class="upazila-select mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                            <option>Select One</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700">Village/House No./Road No./Other Alternative*</label>
+                        <input type="text" name="address" id="address" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+
+                    <div>
+                        <label for="post_office" class="block text-sm font-medium text-gray-700">Post Office*</label>
+                        <input type="text" name="post_office" id="post_office" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md p-2 border">
+                    </div>
+                    
+                    <div>
+                        <label for="qualification" class="block text-sm font-medium text-gray-700">Educational Qualification* (Higher Level)</label>
+                        <select id="qualification" name="qualification" required class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border">
+                            <option selected disabled>--Select One--</option>
+                            <option value="Masters">Masters</option>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="HSC">HSC</option>
+                            <option value="SSC">SSC</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <span class="block text-sm font-medium text-gray-700">Have any computer?*</span>
+                        <div class="mt-2 space-x-6">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="has_computer" value="yes" class="form-radio h-4 w-4 text-indigo-600 border-gray-300" required>
+                                <span class="ml-2 text-sm text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="has_computer" value="no" class="form-radio h-4 w-4 text-indigo-600 border-gray-300">
+                                <span class="ml-2 text-sm text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="photograph" class="block text-sm font-medium text-gray-700">Photograph*</label>
+                        <input type="file" name="photograph" id="photograph" required class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                        <p class="mt-1 text-xs text-gray-500">(File type must be jpg or jpeg or png. Maximum file size 2 mb.)</p>
+                    </div>
+
+                    <div>
+                        <label for="signature" class="block text-sm font-medium text-gray-700">Signature*</label>
+                        <input type="file" name="signature" id="signature" required class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                        <p class="mt-1 text-xs text-gray-500">(File type must be jpg or jpeg or png. Maximum file size 2 mb.)</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <hr class="mt-8">
+
+            <div class="pt-4 sm:pt-6 flex justify-end">
+                <button type="submit" class="w-full sm:w-auto px-4 sm:px-6 py-2 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Submit Data
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
