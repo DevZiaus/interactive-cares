@@ -172,7 +172,7 @@ nav.navbar .nav-menu {
     display: none;
     width: 100%;
     position: absolute;
-    top: calc(100% - 20%); 
+    top: calc(100% - 20%);
     left: 0;
     background-color: var(--color-white);
     padding: 20px;
@@ -304,7 +304,7 @@ nav.navbar .nav-menu.active {
 
 /* Services Section */
 .services {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     padding: 20px;
     gap: 20px;
@@ -352,13 +352,13 @@ nav.navbar .nav-menu.active {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}  
+}
 
 .service-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: var(--color-primary);
-}   
+}
 
 .service-card p {
     font-size: 1rem;
@@ -436,7 +436,7 @@ nav.navbar .nav-menu.active {
     flex-direction: column;
     align-items: center;
     text-align: center;
-}  
+}
 
 .testimonials h2 {
     font-family: var(--font-heading);
@@ -467,16 +467,16 @@ nav.navbar .nav-menu.active {
 }
 
 .testimaonial-content::after {
-    content: ""; 
+    content: "";
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 15px solid transparent; 
-    border-right: 15px solid transparent; 
-    border-top: 15px solid var(--color-white); 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid var(--color-white);
 }
 
 .testimaonial-content h3 {
@@ -678,7 +678,7 @@ footer {
     color: var(--color-white);
     font-size: 1.5rem;
     transition: color 0.3s;
-}  
+}
 
 .social-links a:hover {
     color: var(--color-accent-light);
@@ -687,30 +687,6 @@ footer {
 
 /* Media Queries */
 @media (min-width: 768px) {
-
-    /* .menu-toggle {
-        display: none;
-    }
-
-    nav.navbar .nav-menu {
-        display: flex;
-        position: static;
-        width: auto;
-        padding: 0;
-        box-shadow: none;
-        background: none;
-    }
-
-    nav.navbar {
-        flex-direction: row;
-    }
-
-    nav.navbar ul {
-        flex-direction: row;
-        display: flex;
-        width: auto;
-    } */
-
     .hero {
         flex-direction: row;
         text-align: left;
@@ -767,6 +743,7 @@ footer {
     .footer-grid {
         flex-direction: row;
         text-align: left;
+        align-items: flex-start;
     }
 
     .footer-navigation {
@@ -776,10 +753,6 @@ footer {
     .footer-bottom-container {
         flex-direction: row;
         text-align: left;
-    }
-
-    .footer-grid {
-        align-items: flex-start;
     }
 }
 
@@ -818,5 +791,3 @@ footer {
         flex-direction: row;
     }
 }
-
-

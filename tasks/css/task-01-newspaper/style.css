@@ -1,0 +1,504 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&display=swap');
+
+.hind-siliguri-regular {
+  font-family: "Hind Siliguri", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hind-siliguri-bold {
+  font-family: "Hind Siliguri", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Custom Bangla Font */
+
+@font-face {
+    font-family: 'SiyamRupali';
+    src: url('./fonts/SiyamRupali.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+:root {
+    --primary-color: #E30613; /* A vibrant red, common in newspaper design */
+    --secondary-color: #333;
+    --text-color: #1a1a1a;
+    --light-gray: #f4f4f4;
+    --border-color: #ddd;
+    --white-color: #ffffff;
+    /* Font stacks: Use Google Fonts as primary, fallback to custom/system */
+    --google-font: 'Hind Siliguri', sans-serif;
+    --custom-font: SiyamRupali, sans-serif;
+}
+
+body {
+    font-family: var(--custom-font);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+main, aside {
+  width: 100%;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* --- Header & Navigation --- */
+
+.main-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows nav to wrap if needed */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--general-font);
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.main-nav {
+    width: 100%; /* Full width on mobile */
+    display: none; /* Hidden by default */
+    order: 3; /* Push below logo and toggle */
+    margin-top: 10px;
+}
+
+.main-nav.active {
+    display: block;
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav li {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+}
+
+/* --- Typography & Elements --- */
+
+h2, h3, h4 {
+    font-weight: 700;
+    margin: 15px 0 10px;
+    line-height: 1.2;
+    font-family: var(--google-font);
+}
+
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* --- Featured News Section --- */
+
+
+.featured-story {
+    border: 1px solid var(--border-color);
+    background-color: var(--light-gray);
+    margin-bottom: 20px;
+}
+
+.story-image {
+    width: 100%;
+    /* Placeholder for actual image aspect ratio */
+    height: 200px;
+    object-fit: cover;
+}
+
+.story-content {
+    padding: 15px;
+}
+
+/* --- Grid News Section --- */
+
+.grid-container {
+    display: grid;
+    /* 1 column on mobile */
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.item-image {
+    /* Placeholder for actual image aspect ratio */
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.grid-item h4 {
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.hidden-mobile {
+    display: none; /* Hide on mobile by default */
+}
+
+/* --- Column Layout Section --- */
+
+.column-layout {
+    display: flex;
+    flex-direction: column; /* Stacked columns on mobile */
+    gap: 20px;
+}
+
+.main-column, .sidebar-column {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.article-list, .popular-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li, .popular-list li {
+    border-bottom: 1px dashed var(--border-color);
+    padding: 10px 0;
+    font-size: 1rem;
+}
+
+.article-list li:last-child, .popular-list li:last-child {
+    border-bottom: none;
+}
+
+.article-list a, .popular-list a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.time {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* --- Footer --- */
+
+
+footer {
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+    padding: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+footer .logo a {
+    color: var(--primary-color);
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-navigation {
+    flex-direction: column;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.footer-navigation h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+
+.footer-navigation ul li {
+    margin-bottom: 10px;
+}
+
+
+.footer-navigation ul li a {
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footer-navigation ul li a:hover {
+    color: var(--color-accent-light);
+}
+
+.footer-bottom {
+    background-color: var(--secondary-color);
+    width: 100%;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--white-color);
+    padding: 5px 0;
+}
+
+.footer-bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.copyright {
+    flex: 1;
+}
+
+.copyright p {
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-accent-light);
+}
+
+
+/* --- Media Queries for Tablet (e.g., 600px and up) --- */
+
+@media (min-width: 600px) {
+    .container {
+        max-width: 90%; /* Increase max width on tablet */
+    }
+
+    /* Grid layout adjustments */
+    .grid-container {
+        /* 2 columns on tablet */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hidden-mobile {
+        display: block; /* Show the 4th grid item */
+    }
+
+
+}
+
+/* --- Media Queries for Desktop (e.g., 1024px and up) --- */
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1100px; /* Max width for large screens */
+    }
+
+    /* Header Nav: Display inline */
+    .menu-toggle {
+        display: none; /* Hide toggle on desktop */
+    }
+
+    .main-header {
+        flex-wrap: nowrap;
+    }
+
+    .main-nav {
+        width: auto;
+        display: block !important; /* Ensure it's always shown on desktop */
+        order: initial;
+        margin-top: 0;
+    }
+
+    .main-nav ul {
+        display: flex;
+        gap: 20px;
+    }
+
+    .main-nav li {
+        padding: 0;
+        border-top: none;
+    }
+
+    .main-nav a {
+        padding: 5px 0;
+    }
+
+    .container {
+        flex-direction: row; /* Arranges items horizontally (row) on desktop */
+    }
+
+    .main-container {
+        width: 75%;
+        margin-right: 20px;
+    }
+
+    aside {
+        width: 25%;
+        padding-left: 20px;
+    }
+
+    /* Featured Story Layout: Side-by-side text/image */
+    .featured-story {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .story-image {
+        flex: 0 0 40%; /* Image takes 40% of the width */
+        height: auto;
+        max-height: 250px;
+    }
+
+    .story-content {
+        flex: 1; /* Content takes the rest */
+        padding: 10px 0 10px 0;
+    }
+
+    /* Grid layout adjustments */
+    .grid-container {
+        /* 3 columns on desktop */
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Column Layout: Side-by-side columns */
+    .column-layout {
+        flex-direction: row;
+    }
+
+    .main-column {
+        flex: 2; /* Main content takes 2/3 of the space */
+    }
+
+    .sidebar-column {
+        flex: 1; /* Sidebar takes 1/3 of the space */
+    }
+
+    footer .container {
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+
+    .footer-navigation {
+        flex-direction: row;
+        flex-grow: 1;
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    .footer-bottom-container {
+        flex-direction: row;
+        text-align: left;
+    }
+}
