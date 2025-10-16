@@ -1,0 +1,328 @@
+:root {
+      --font-size-base: 16px;
+    }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+    text-decoration: underline;
+    margin: 2.5rem 0;
+}
+
+/***************/
+/* Classic Bar */
+/***************/
+/* General reset for the nav */
+.classic-bar-nav {
+    display: flex;
+    background-color: #333;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.classic-bar-nav .logo a {
+    text-decoration: none;
+    color: #00f7ff;
+    transition: color ease-in-out .3s;
+    padding-left: 1.5rem;
+}
+
+.classic-bar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.classic-bar-nav li {
+  margin: 0;
+}
+
+.classic-bar-nav ul li a {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-family: Arial, sans-serif;
+  position: relative;
+  transition: color ease-in-out 0.3s;
+}
+
+.classic-bar-nav .search {
+    color: #00f7ff;
+    transition: color ease-in-out .3s;
+    padding-right: 1.5rem;
+    cursor: pointer;
+    transition: color ease-in-out .3s;
+}
+
+/* --- Hover Effect --- */
+
+.classic-bar-nav .logo a:hover {
+    color: #ffae00;
+}
+
+.classic-bar-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #00bcd4;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.classic-bar-nav ul li a:hover {
+  color: #00bcd4;
+}
+
+.classic-bar-nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.classic-bar-nav .search:hover {
+    color: #ffae00;
+}
+
+
+/*********************/
+/* Pill Shaped Menu */
+/*******************/
+.pill-menu-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+}
+
+.pill-menu-nav .logo a {
+    text-decoration: none;
+    color: #00f7ff;
+    transition: color ease-in-out .3s;
+    padding-left: 1rem;
+}
+
+.pill-menu-nav ul {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.pill-menu-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* --- Hover Effect --- */
+
+.pill-menu-nav .logo a:hover {
+    color: #ff6347;
+}
+
+.pill-menu-nav ul li a:hover {
+  background-color: #ff6347;
+  color: white;
+  border-color: #ff6347;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/**********************/
+/* Icon Centric Menu */
+/********************/
+.icon-centric-nav {
+  width: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #2c3e50;
+  padding: .63rem 0;
+  transition: width 0.3s;
+}
+
+.icon-centric-nav a {
+  display: flex;
+  align-items: center;
+  padding: .63rem 1rem;
+  text-decoration: none;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.icon-centric-nav .icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.icon-centric-nav .logo .icon {
+    margin-left: 0.2rem;
+    color: #00bcd4;
+    font-size: 2rem;
+}
+
+.icon-centric-nav .logo .text {
+    margin-left: -1rem;
+    color: #00bcd4;
+}
+
+.icon-centric-nav .logo .text {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s, color 0.3s, font-size 0.3s;
+  font-size: 1rem;
+}
+
+.icon-centric-nav .text {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  font-family: sans-serif;
+}
+
+/* --- Hover Effect --- */
+
+.icon-centric-nav a:hover .text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.icon-centric-nav:hover {
+  width: 12.5rem;
+}
+
+.icon-centric-nav:hover .icon-centric-nav .logo {
+    color: #f39c12;
+}
+
+.icon-centric-nav:hover .logo .icon,
+.icon-centric-nav:hover .logo .text {
+  transform: translateX(0);
+  opacity: 1;
+  color: #f39c12;
+  font-size: 2rem;
+  align-self: baseline;
+}
+
+.icon-centric-nav:hover .logo .text {
+    font-size: 1.5rem;
+}
+
+.icon-centric-nav a:hover {
+  background-color: #34495e;
+}
+
+/**********************/
+/* Split Border Menu */
+/********************/
+.split-border-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #292424;
+    border-bottom: 1px solid #ddd;
+}
+
+.split-border-nav .logo a {
+    text-decoration: none;
+    color: #00f7ff;
+    transition: color ease-in-out .3s;
+    padding-left: 1rem;
+}
+
+.split-border-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.split-border-nav ul li a {
+  display: block;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #ece5e5;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden; /* Important to contain the border effect */
+  z-index: 1; /* Keep text above the background effect */
+}
+
+.split-border-nav .search {
+    color: #00f7ff;
+    transition: color ease-in-out .3s;
+    padding-right: 1.5rem;
+    cursor: pointer;
+    transition: color ease-in-out .3s;
+}
+
+/* --- Hover Effect --- */
+
+.split-border-nav .logo a:hover {
+    color: #f39c12;
+}
+
+/* The 'border' that expands will be two pseudo-elements */
+.split-border-nav ul li a::before,
+.split-border-nav ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0; /* Start with zero height */
+  background-color: #f39c12; /* A vibrant orange */
+  transition: height 0.3s ease-out, top 0.3s ease-out;
+  z-index: -1; /* Place behind the text */
+}
+
+/* Top border */
+.split-border-nav ul li a::before {
+  top: 0;
+}
+
+/* Bottom border */
+.split-border-nav ul li a::after {
+  bottom: 0;
+}
+
+.split-border-nav ul li a:hover {
+  color: #00f7ff; /* Text color change on hover */
+}
+
+/* On hover, make both borders expand to half the height */
+.split-border-nav a:hover::before,
+.split-border-nav a:hover::after {
+  height: 50%;
+}
+
+/* On hover, move the top border down */
+.split-border-nav a:hover::before {
+  top: 0;
+}
+
+/* On hover, move the bottom border up */
+.split-border-nav a:hover::after {
+  bottom: 0;
+}
+
+.split-border-nav .search:hover {
+    color: #f39c12;
+}
