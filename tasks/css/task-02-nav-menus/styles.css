@@ -113,18 +113,41 @@ h2 {
     padding-left: 1rem;
 }
 
+.pill-menu-nav .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 1rem;
+}
+
+.pill-menu-nav .search input {
+    border-radius: 1.5rem;
+    height: 2.2rem;
+    width: 15rem;
+    padding: .5rem;
+    border: 1px solid #000000;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pill-menu-nav .search label {
+    position: absolute;
+    left: 70%;
+    cursor: pointer;
+    transition: color ease-in-out .3s;
+}
+
 .pill-menu-nav ul {
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  gap: 0.63rem;
+  padding: 0.63rem;
   list-style-type: none;
 }
 
 .pill-menu-nav ul li a {
   text-decoration: none;
   color: #333;
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 0.63rem 1.25rem;
+  border-radius: 1.5rem;
   background-color: white;
   border: 1px solid #ccc;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -138,11 +161,20 @@ h2 {
     color: #ff6347;
 }
 
+.pill-menu-nav .search:hover input {
+    border-color: #ff6347;
+    box-shadow: 0 0 0 4px rgba(255,99,71,0.08);
+}
+
+.pill-menu-nav .search label:hover {
+    color: #ff6347;
+}
+
 .pill-menu-nav ul li a:hover {
   background-color: #ff6347;
   color: white;
   border-color: #ff6347;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
 }
 
 /**********************/
@@ -155,6 +187,7 @@ h2 {
   background-color: #2c3e50;
   padding: .63rem 0;
   transition: width 0.3s;
+  border-radius: 1rem;
 }
 
 .icon-centric-nav a {
@@ -172,10 +205,12 @@ h2 {
   margin-right: 1rem;
 }
 
-.icon-centric-nav .logo .icon {
+.icon-centric-nav .logo .icon,
+.icon-centric-nav .search .icon{
     margin-left: 0.2rem;
     color: #00bcd4;
     font-size: 2rem;
+    transition: color linear .3s;
 }
 
 .icon-centric-nav .logo .text {
@@ -195,6 +230,31 @@ h2 {
   opacity: 0;
   transition: transform 0.3s, opacity 0.3s;
   font-family: sans-serif;
+}
+
+.icon-centric-nav .search {
+    display: flex;
+    /* align-items: center; */
+    position: relative;
+    padding: .5rem 0;
+}
+
+.icon-centric-nav .search .icon {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.icon-centric-nav .search .text {
+   border-radius: 1.5rem;
+    height: 2.2rem;
+    width: 9.5rem;
+    padding: .5rem 1rem;
+    border: 1px solid #000000;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+    font-size: 1rem;
+    background: white;
 }
 
 /* --- Hover Effect --- */
@@ -229,6 +289,19 @@ h2 {
   background-color: #34495e;
 }
 
+/* .icon-centric-nav:hover .search .icon, */
+.icon-centric-nav .search .icon:hover {
+  color: #f39c12;
+}
+
+.icon-centric-nav .search:hover .text {
+  transform: translateX(0);
+  opacity: 1;
+  border-color: #f39c12;
+  box-shadow: 0 0 0 4px rgba(255,99,71,0.08);
+  margin-left: -1rem;
+}
+
 /**********************/
 /* Split Border Menu */
 /********************/
@@ -256,23 +329,23 @@ h2 {
 
 .split-border-nav ul li a {
   display: block;
-  padding: 15px 25px;
+  padding: 1rem 1.5rem;
   text-decoration: none;
   color: #ece5e5;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 500;
   position: relative;
-  overflow: hidden; /* Important to contain the border effect */
-  z-index: 1; /* Keep text above the background effect */
+  overflow: hidden;
+  z-index: 1;
 }
 
-.split-border-nav .search {
+/* .split-border-nav .search {
     color: #00f7ff;
     transition: color ease-in-out .3s;
     padding-right: 1.5rem;
     cursor: pointer;
     transition: color ease-in-out .3s;
-}
+} */
 
 /* --- Hover Effect --- */
 
@@ -287,10 +360,10 @@ h2 {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 0; /* Start with zero height */
-  background-color: #f39c12; /* A vibrant orange */
+  height: 0;
+  background-color: #f39c12;
   transition: height 0.3s ease-out, top 0.3s ease-out;
-  z-index: -1; /* Place behind the text */
+  z-index: -1;
 }
 
 /* Top border */
@@ -304,7 +377,7 @@ h2 {
 }
 
 .split-border-nav ul li a:hover {
-  color: #00f7ff; /* Text color change on hover */
+  color: #00f7ff;
 }
 
 /* On hover, make both borders expand to half the height */
@@ -323,6 +396,6 @@ h2 {
   bottom: 0;
 }
 
-.split-border-nav .search:hover {
+/* .split-border-nav .search:hover {
     color: #f39c12;
-}
+} */
