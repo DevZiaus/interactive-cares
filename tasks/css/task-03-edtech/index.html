@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="styles.css">
+<title>EdTech Landing — Navbar & Hero</title>
+
+<!-- Google font similar to the screenshot -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+  <header class="site">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#" aria-label="BeatsLearning Home">
+        <div class="logo" aria-hidden="true">B</div>
+        <div class="title">BeatsLearning</div>
+      </a>
+
+      <!-- desktop links will show when screen >= 760px because .nav-links style resets -->
+      <div class="menu-toggle" aria-hidden="false">
+        <!-- checkbox toggles mobile menu -->
+        <input id="nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
+        <label class="hamburger" for="nav-toggle" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <div class="nav-links" role="menu" aria-label="Mobile menu">
+          <a href="#" role="menuitem">Home</a>
+          <a href="#" role="menuitem">About Us</a>
+          <a href="#" role="menuitem">Courses</a>
+          <a href="#" role="menuitem">Apprenticeships</a>
+          <a href="#" role="menuitem">More</a>
+
+          <div style="margin-top:12px;">
+            <a class="btn btn-ghost" href="#" role="menuitem">Sign in</a>
+            <a class="btn btn-primary" href="#" role="menuitem" style="margin-left:10px;">Login</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- visible on desktop as inline nav -->
+      <div class="nav-links" style="display:none;">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Courses</a>
+        <a href="#">Apprenticeships</a>
+        <a href="#">More</a>
+      </div>
+
+      <!-- <div class="actions-desktop" aria-hidden="true">
+        <a class="btn btn-ghost" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#">Login</a>
+      </div> -->
+    </nav>
+  </header>
+
+  <main class="site" role="main">
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-left">
+        <div class="eyebrow">Training to succeed</div>
+        <h1 class="hero-title">Believe and you <br>can achieve</h1>
+        <p class="hero-sub">
+          Learn any skill from the comfort of your home. Anywhere and Anytime — starting at only $10.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#" aria-label="Apply now">Apply Now ➜</a>
+          <a class="btn btn-ghost" href="#" aria-label="Learn more">Learn more</a>
+
+          <!-- decorative element -->
+          <div style="margin-left:8px; display:flex; align-items:center;">
+            <div class="dots" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="false">
+        <div class="illus" role="img" aria-label="Student illustration">
+          <!-- A simple illustrative SVG placeholder; swap for your 3D/PNG asset -->
+          <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#ffd2a8"/>
+                <stop offset="1" stop-color="#ffb36b"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0" stop-color="#7dd3fc"/>
+                <stop offset="1" stop-color="#3db8ff"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="200" height="200" rx="18" fill="#fff"/>
+            <circle cx="100" cy="70" r="36" fill="url(#g1)"/>
+            <rect x="38" y="110" width="124" height="60" rx="10" fill="url(#g2)"/>
+            <rect x="80" y="128" width="60" height="6" rx="3" fill="#fff"/>
+            <rect x="76" y="140" width="80" height="10" rx="5" fill="#fff"/>
+            <!-- small floating cards -->
+            <rect x="140" y="18" width="34" height="22" rx="6" fill="#fff" opacity="0.9"/>
+            <rect x="18" y="18" width="36" height="22" rx="6" fill="#fff" opacity="0.9"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="spacer"></div>
+
+</body>
+</html>

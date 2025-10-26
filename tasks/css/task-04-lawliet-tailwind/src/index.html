@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Plus+Jakarta+Sans:ital@0;1&family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="./styles.css" />
+        <title>Legal Consultant - Lawliet</title>
+        <script src="./script.js" defer></script>
+        <!-- favicon -->
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    </head>
+    <body class="bg-background font-body">
+        <header class="w-[95%] max-w-1200 mx-auto px-4 py-5 relative">
+            <nav
+                class="flex items-center justify-between gap-5 mt-5"
+                aria-label="Primary"
+            >
+                <!-- Logo -->
+                <a
+                    class="flex items-center gap-2"
+                    href="/"
+                    aria-label="Lawlist Home"
+                >
+                    <img
+                        src="./images/logo.png"
+                        alt="Lawlist Logo"
+                        class="h-8 w-auto"
+                    />
+                    <span class="font-heading text-primary text-2xl font-bold"
+                        >LawLiet</span
+                    >
+                </a>
+                <!-- Menu toggle (mobile only) -->
+                <button
+                    id="menuToggle"
+                    class="md:hidden p-2 rounded relative z-50"
+                    aria-label="Toggle menu"
+                    aria-expanded="false"
+                >
+                    <span id="hamburger" class="block w-6 h-6 relative">
+                        <span
+                            class="block absolute left-0 right-0 h-0.5 bg-primary top-1 transition-transform duration-300"
+                            id="hb-top"
+                        ></span>
+                        <span
+                            class="block absolute -left-2 right-2 h-0.5 bg-primary top-1/2 transform -translate-y-1/2 transition-opacity duration-300"
+                            id="hb-mid"
+                        ></span>
+                        <span
+                            class="block absolute left-0 right-0 h-0.5 bg-primary bottom-1 transition-transform duration-300"
+                            id="hb-bot"
+                        ></span>
+                    </span>
+                </button>
+                <!-- Navigation menu -->
+                <ul
+                    id="primaryMenu"
+                    class="nav-menu hidden md:flex md:flex-row md:items-center md:gap-6 md:static md:bg-transparent absolute left-0 right-0 top-full mt-2 md:mt-0 bg-white p-5 shadow-md z-50 md:shadow-none md:p-0 md:w-auto"
+                    role="menu"
+                >
+                    <li role="none">
+                        <a
+                            class="block px-4 py-2 font-semibold rounded-md hover:bg-primary hover:text-white"
+                            href="#solutions"
+                            role="menuitem"
+                            >Solutions</a
+                        >
+                    </li>
+                    <li role="none">
+                        <a
+                            class="block px-4 py-2 font-semibold rounded-md hover:bg-primary hover:text-white"
+                            href="#about"
+                            role="menuitem"
+                            >About</a
+                        >
+                    </li>
+                    <li role="none">
+                        <a
+                            class="block px-4 py-2 font-semibold rounded-md hover:bg-primary hover:text-white"
+                            href="#services"
+                            role="menuitem"
+                            >Services</a
+                        >
+                    </li>
+                    <li role="none">
+                        <a
+                            class="block px-4 py-2 font-semibold rounded-md hover:bg-primary hover:text-white"
+                            href="#contact"
+                            role="menuitem"
+                            >Contact</a
+                        >
+                    </li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <!-- Search button -->
+                    <button
+                        class="search-btn text-[1.15rem] text-(var(--tw-color)) text-text-default hover:text-primary focus:outline-none"
+                        aria-label="Search"
+                    >
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section
+                id="hero"
+                class="w-[95%] mx-auto flex flex-col text-center m-0 px-5 md:flex-row md:text-left md:mx-10"
+            >
+                <div>
+                    <div>
+                        <h1
+                            class="font-heading font-bold text-5xl md:text-6xl lg:text-8xl leading-28 text-primary"
+                        >
+                            Your Solution <br />Legal Consultancy
+                        </h1>
+                        <p class="text-lg text-light mt-5 max-w-[600px]">
+                            We are here to help you take care of your legality
+                            with the best service especially for you.
+                        </p>
+                        <a href="#contact" class="button">GET STARTED</a>
+                    </div>
+                    <div class="trusted-by">
+                        <p>Trusted By 101 Companies In Indonesia:</p>
+                        <div class="logos">
+                            <img
+                                src="./images/airbnb-logo.png"
+                                alt="airbnb Logo"
+                            />
+                            <img
+                                src="./images/hubspot-logo.png"
+                                alt="Hubspot Logo"
+                            />
+                            <img
+                                src="./images/microsoft-logo.png"
+                                alt="Microsoft Logo"
+                            />
+                            <img
+                                src="./images/google-logo.png"
+                                alt="Google Logo"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img
+                        src="./images/hero-image.png"
+                        alt="Smiling female legal consultant in a professional jacket"
+                    />
+                </div>
+            </section>
+            <section id="services" class="light-background">
+                <div class="container services">
+                    <div class="why-us">
+                        <h2>Why do we help with legalization?</h2>
+                        <p>
+                            We are here for UMKM in Indonesia to carry out the
+                            legalization process, which is sometimes
+                            complicated.
+                        </p>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="icon">
+                                <img
+                                    src="./images/circle-layer.png"
+                                    alt="Environmental Consultation Icon"
+                                />
+                            </div>
+                            <h3>Environmental Consultation</h3>
+                            <p>
+                                We help businesses meet environmental
+                                regulations and standards.
+                            </p>
+                        </article>
+                        <article class="service-card">
+                            <div class="icon">
+                                <img
+                                    src="./images/bag.png"
+                                    alt="Corporate and Commercial Law Icon"
+                                />
+                            </div>
+                            <h3>Corporate and Commercial Law</h3>
+                            <p>
+                                Comprehensive legal support for all corporate
+                                transactions and commercial matters.
+                            </p>
+                        </article>
+                        <article class="service-card">
+                            <div class="icon">
+                                <img
+                                    src="./images/rocket.png"
+                                    alt="Information and Technology Law Icon"
+                                />
+                            </div>
+                            <h3>Information and Technology Law</h3>
+                            <p>
+                                Guidance on data privacy, cybersecurity, and
+                                tech-related legal issues.
+                            </p>
+                        </article>
+                        <article class="service-card">
+                            <div class="icon">
+                                <img
+                                    src="./images/user-arrows.png"
+                                    alt="Asset Services Icon"
+                                />
+                            </div>
+                            <h3>Asset Services</h3>
+                            <p>
+                                Expert legal services for managing and
+                                protecting your valuable assets.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="stats" class="dark-background">
+                <div class="container stats">
+                    <h2>Some count that matters</h2>
+                    <p>
+                        Our performance speaks for itself, here are the numbers.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3 class="number">30</h3>
+                            <p class="label">Clients</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="number">300+</h3>
+                            <p class="label">Token Bussiness Legalities</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="number">8</h3>
+                            <p class="label">Years of Journey</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="testimonials" class="light-background">
+                <div class="container testimonials">
+                    <h2>Clients Testimonial</h2>
+                    <div class="testimonial-cards">
+                        <div class="testimonial-card">
+                            <div class="testimaonial-content">
+                                <h3>Incredible Experience</h3>
+                                <blockquote>
+                                    <p>
+                                        We had an incredible experience working
+                                        with Landify and were impressed they
+                                        made such a big difference in only three
+                                        weeks. Our team is so grateful for the
+                                        wonderful improvements they made and
+                                        their ability to get familiar with the
+                                        concept so quickly.
+                                    </p>
+                                </blockquote>
+                            </div>
+                            <figure>
+                                <img
+                                    src="./images/client.png"
+                                    alt="Photo of Anya Tailor Joy"
+                                    class="client-photo"
+                                />
+                                <div class="client-info">
+                                    <cite>Anya Tailor Joy</cite>
+                                    <span class="client-title"
+                                        >CEO, SF Industries</span
+                                    >
+                                </div>
+                            </figure>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimaonial-content">
+                                <h3>
+                                    Dependable, Responsive, Professional Partner
+                                </h3>
+                                <blockquote>
+                                    <p>
+                                        Fermin Apps has collaborated with
+                                        Landify team for several projects such
+                                        as Photo Sharing Apps and Custom Social
+                                        Networking Apps. The experience has been
+                                        pleasant, professional and exceeding our
+                                        expectations.
+                                    </p>
+                                </blockquote>
+                            </div>
+                            <figure>
+                                <img
+                                    src="./images/client.png"
+                                    alt="Photo of Sri Alam"
+                                    class="client-photo"
+                                />
+                                <div class="client-info">
+                                    <cite>Sri Alam</cite>
+                                    <span class="client-title"
+                                        >CEO, Membagongkan GROUP</span
+                                    >
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="complex-questions-cta" class="cta-section">
+                <div class="cta-container">
+                    <div class="cta-content">
+                        <h2>Complex Questions?</h2>
+                        <p>
+                            Request for a personalized budget for your legal
+                            problem. We will send you a coupe options in 24
+                            hours. You can have free consult , if a our first
+                            customer
+                        </p>
+                        <a
+                            href="tel:+8801225588454"
+                            class="button primary-button"
+                            >CALL NOW</a
+                        >
+                    </div>
+                    <div class="cta-image">
+                        <img
+                            src="./images/questions-image.png"
+                            alt="Male consultant talking on the phone"
+                        />
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <a href="/" class="logo" aria-label="Lawliet Home">
+                            <img
+                                src="./images/footer-logo.png"
+                                alt="Lawliet Logo"
+                            />
+                            <span>Lawliet</span>
+                        </a>
+                    </div>
+                    <div class="footer-navigation">
+                        <nav
+                            class="footer-nav-group"
+                            aria-labelledby="footer-nav-company"
+                        >
+                            <h3 id="footer-nav-company">Company</h3>
+                            <ul>
+                                <li>
+                                    <a href="#about">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#careers">Careers</a>
+                                </li>
+                                <li>
+                                    <a href="#news">News</a>
+                                </li>
+                                <li>
+                                    <a href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav
+                            class="footer-nav-group"
+                            aria-labelledby="footer-nav-support"
+                        >
+                            <h3 id="footer-nav-support">Support</h3>
+                            <ul>
+                                <li>
+                                    <a href="#help">Help Center</a>
+                                </li>
+                                <li>
+                                    <a href="#privacy">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#terms">Terms & Condition</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav
+                            class="footer-nav-group"
+                            aria-labelledby="footer-nav-explore"
+                        >
+                            <h3 id="footer-nav-explore">Explore</h3>
+                            <ul>
+                                <li>
+                                    <a href="#solutions">Solutions</a>
+                                </li>
+                                <li>
+                                    <a href="#pricing">Pricing</a>
+                                </li>
+                                <li>
+                                    <a href="#blog">Blog</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container footer-bottom-container">
+                    <div class="copyright">
+                        <p>&copy; 2025 Lawliet. All rights reserved.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Dribbble">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
