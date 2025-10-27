@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta Tags -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="./assets/css/styles.css" />
+        <!-- Favicon -->
         <link
             rel="shortcut icon"
             href="./assets/images/favicon.ico"
             type="image/x-icon"
         />
+        <!-- Title -->
         <title>Foodies - Serious For Food</title>
     </head>
     <body>
@@ -16,17 +28,16 @@
         <header>
             <nav>
                 <!-- Logo -->
-                <a href="#">Foodies</a>
+                <a href="/">Foodies</a>
 
                 <!-- Desktop Navigation -->
-                <div>
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#menu">Menu</a>
-                    <a href="#service">Service</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#get-started">Get Started</a>
-                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#company">Our Company</a></li>
+                    <li><a href="#">Pages</a></li>
+                </ul>
 
                 <!-- Mobile Menu Toggle Button -->
                 <button
@@ -36,18 +47,19 @@
                     aria-controls="mobile-menu"
                 >
                     <!-- You can place an icon here, e.g., ☰ -->
-                    Menu
+                    <span class="line line-1"></span>
+                    <span class="line line-2"></span>
+                    <span class="line line-3"></span>
                 </button>
             </nav>
 
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#menu">Menu</a>
-                <a href="#service">Service</a>
-                <a href="#contact">Contact</a>
-                <a href="#get-started">Get Started</a>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#company">Our Company</a></li>
+                <li><a href="#">Pages</a></li>
             </div>
         </header>
 
@@ -59,17 +71,47 @@
                 <div>
                     <h1>We're Serious For Food.</h1>
                     <p>
-                        Discover the best healthy and delicious food from our
-                        restaurant. We provide the best food to our customers.
+                        We strive to provide a space where guests can connect
+                        with themselves and explore their full potential,
+                        offering a safe place.
                     </p>
-                    <a href="#get-started">Get Started</a>
+                    <a href="#get-started"
+                        >Get Started
+                        <span><i class="fa-solid fa-right-long"></i></span
+                    ></a>
+                    <div class="brands">
+                        <ul>
+                            <li>
+                                <a href="#"
+                                    ><img
+                                        src="./assets/images/brand-1.png"
+                                        alt="Barad Image one"
+                                /></a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    ><img
+                                        src="./assets/images/brand-2.png"
+                                        alt="Brand Image two"
+                                /></a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    ><img
+                                        src="./assets/images/brand-3.png"
+                                        alt="Brand Image three"
+                                /></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- Image Content -->
                 <div>
                     <img
-                        src="https://placehold.co/600x600/F3F4F6/9CA3AF?text=Woman+Cooking"
+                        src="./assets/images/hero-image.png"
                         alt="Woman happily cooking a healthy meal in a bright kitchen"
                     />
+                    <img src="./assets/images/Polcadot.png" alt="" />
                 </div>
             </section>
 
@@ -77,24 +119,31 @@
             <section>
                 <div>
                     <div>
-                        <!-- Icon placeholder -->
+                        <i class="fa-solid fa-truck"></i>
                         <div>
-                            <h2>1500+</h2>
-                            <p>Delivery</p>
+                            <h4>Free Shipping</h4>
+                            <p>Orders Over $140</p>
                         </div>
                     </div>
                     <div>
-                        <!-- Icon placeholder -->
+                        <i class="fa-solid fa-wallet"></i>
                         <div>
-                            <h2>500+</h2>
-                            <p>Clients</p>
+                            <h2>Quick Payment</h2>
+                            <p>100% Secure Payment</p>
                         </div>
                     </div>
                     <div>
-                        <!-- Icon placeholder -->
+                        <i class="fa-solid fa-percent"></i>
                         <div>
-                            <h2>350+</h2>
-                            <p>Ingredients</p>
+                            <h2>Special Promo</h2>
+                            <p>Get Special Promo</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-headphones"></i>
+                        <div>
+                            <h2>24/7 Support</h2>
+                            <p>Ready Support</p>
                         </div>
                     </div>
                 </div>
@@ -105,25 +154,34 @@
                 <!-- Image -->
                 <div>
                     <img
-                        src="https://placehold.co/500x500/F3F4F6/9CA3AF?text=Green+Vegetables"
+                        src="./assets/images/benefit-image.png"
                         alt="A beautiful assortment of fresh green vegetables"
                     />
                 </div>
                 <!-- Text -->
                 <div>
+                    <p>Our Benefit</p>
                     <h2>The More Healthy Food The Better</h2>
                     <ul>
                         <li>
-                            <!-- Icon placeholder -->
-                            <span>Be Healthier</span>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Be Alive With Veggie Food.</span>
                         </li>
                         <li>
-                            <!-- Icon placeholder -->
-                            <span>Fresh Food</span>
+                            <i class="fa-solid fa-check"></i>
+                            <span>It's The Place To Be.</span>
                         </li>
                         <li>
-                            <!-- Icon placeholder -->
-                            <span>Fresh Vegetables</span>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Nonstop Veggie Food</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>The Best Silk Dish In Town</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Truffles, Egg & Pumpkin Spice</span>
                         </li>
                     </ul>
                 </div>
@@ -131,94 +189,114 @@
 
             <!-- Veggie Food Section -->
             <section id="service">
-                <!-- Image -->
-                <div>
-                    <img
-                        src="https://placehold.co/500x500/F3F4F6/9CA3AF?text=Green+Smoothie"
-                        alt="A delicious and healthy green veggie smoothie in a glass"
-                    />
-                </div>
                 <!-- Text -->
                 <div>
+                    <p>Our Stars</p>
                     <h2>Veggie Food Goes On And Always On</h2>
                     <!-- Stats -->
                     <div>
                         <div>
                             <h3>1,500</h3>
-                            <p>Order</p>
+                            <p>Sold Products</p>
                         </div>
                         <div>
                             <h3>500</h3>
-                            <p>Client</p>
+                            <p>Positive Feedback</p>
                         </div>
                         <div>
                             <h3>400</h3>
-                            <p>Review</p>
+                            <p>Official Store</p>
                         </div>
                     </div>
-                    <a href="#">Learn More</a>
+                    <a href="#"
+                        >Get Special Promo
+                        <span><i class="fa-solid fa-right-long"></i></span
+                    ></a>
+                </div>
+                <!-- Image -->
+                <div>
+                    <img
+                        src="./assets/images/veggie-image.png"
+                        alt="A delicious and healthy green veggie smoothie in a glass"
+                    />
                 </div>
             </section>
 
             <!-- Variety of Foods Section -->
             <section id="menu">
+                <p>Our Features</p>
                 <h2>Variety Of Foods</h2>
                 <div>
                     <!-- Food Card 1 -->
                     <article>
                         <img
-                            src="https://placehold.co/400x300/F3F4F6/9CA3AF?text=Veggie+Salad"
+                            src="./assets/images/grid-1.png"
                             alt="A fresh veggie salad"
                         />
                         <div>
-                            <h3>Veggie Salad</h3>
-                            <p>
-                                A mix of fresh vegetables, perfect for a light
-                                meal.
-                            </p>
-                            <a href="#">Learn More</a>
+                            <h3>Veggies Are Forever</h3>
+                            <p>We offer the following services</p>
+                            <a href="#"
+                                >Discover Now
+                                <span
+                                    ><i
+                                        class="fa-solid fa-right-long"
+                                    ></i></span
+                            ></a>
                         </div>
                     </article>
                     <!-- Food Card 2 -->
                     <article>
                         <img
-                            src="https://placehold.co/400x300/F3F4F6/9CA3AF?text=Mixed+Salad"
-                            alt="A healthy mixed salad"
+                            src="./assets/images/grid-3.png"
+                            alt="A fresh veggie salad"
                         />
                         <div>
-                            <h3>Mixed Salad</h3>
-                            <p>
-                                A delicious combination of fruits, vegetables,
-                                and nuts.
-                            </p>
-                            <a href="#">Learn More</a>
+                            <h3>Good For Your Skin</h3>
+                            <p>We offer the following services</p>
+                            <a href="#"
+                                >Discover Now
+                                <span
+                                    ><i
+                                        class="fa-solid fa-right-long"
+                                    ></i></span
+                            ></a>
                         </div>
                     </article>
                     <!-- Food Card 3 -->
                     <article>
                         <img
-                            src="https://placehold.co/400x300/F3F4F6/9CA3AF?text=Papaya"
-                            alt="A ripe papaya"
+                            src="./assets/images/grid-6.png"
+                            alt="A fresh veggie salad"
                         />
                         <div>
-                            <h3>Papaya</h3>
-                            <p>Fresh and sweet papaya, rich in vitamins.</p>
-                            <a href="#">Learn More</a>
+                            <h3>Veggie Food Groove</h3>
+                            <p>We offer the following services</p>
+                            <a href="#"
+                                >Discover Now
+                                <span
+                                    ><i
+                                        class="fa-solid fa-right-long"
+                                    ></i></span
+                            ></a>
                         </div>
                     </article>
                     <!-- Food Card 4 -->
                     <article>
                         <img
-                            src="https://placehold.co/400x300/F3F4F6/9CA3AF?text=Green+Lime"
-                            alt="Fresh green limes"
+                            src="./assets/images/grid-8.png"
+                            alt="A fresh veggie salad"
                         />
                         <div>
-                            <h3>Green Lime</h3>
-                            <p>
-                                Perfectly sour green limes to zest up your
-                                meals.
-                            </p>
-                            <a href="#">Learn More</a>
+                            <h3>That Comes Close</h3>
+                            <p>We offer the following services</p>
+                            <a href="#"
+                                >Discover Now
+                                <span
+                                    ><i
+                                        class="fa-solid fa-right-long"
+                                    ></i></span
+                            ></a>
                         </div>
                     </article>
                 </div>
@@ -226,6 +304,7 @@
 
             <!-- Most Popular Food Section -->
             <section>
+                <p>Our Product</p>
                 <h2>Most Popular Food</h2>
                 <div>
                     <!-- Popular Card 1 -->
