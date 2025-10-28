@@ -1,25 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("primaryMenu");
-    const top = document.getElementById("hb-top");
-    const mid = document.getElementById("hb-mid");
-    const bot = document.getElementById("hb-bot");
-
-    if (!toggle) return;
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".main-nav");
 
     toggle.addEventListener("click", () => {
-        const isHidden = menu.classList.toggle("hidden");
-        const open = !isHidden;
-        toggle.setAttribute("aria-expanded", String(open));
+        toggle.classList.toggle("active");
+        nav.classList.toggle("open");
+        const expanded = toggle.classList.contains("active");
+        toggle.setAttribute("aria-expanded", expanded);
+    });
 
-        if (open) {
-            mid.classList.add("opacity-0");
-            top.classList.add("translate-y-2", "rotate-45");
-            bot.classList.add("-translate-y-2", "-rotate-45");
-        } else {
-            mid.classList.remove("opacity-0");
-            top.classList.remove("translate-y-2", "rotate-45");
-            bot.classList.remove("-translate-y-2", "-rotate-45");
-        }
+    // Close nav when clicking a link (on mobile)
+    nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            toggle.classList.remove("active");
+            nav.classList.remove("open");
+            toggle.setAttribute("aria-expanded", false);
+        });
     });
 });

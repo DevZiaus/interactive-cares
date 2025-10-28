@@ -25,52 +25,50 @@
     </head>
     <body>
         <!-- Header Section -->
-        <header class="container">
-            <nav>
+        <header class="header">
+            <div class="container header-inner">
                 <!-- Logo -->
                 <a class="logo" href="/">Foodies</a>
-
-                <!-- Mobile Menu Toggle Button -->
+                <!-- Hamburger Button -->
                 <button
-                    id="menuToggle"
-                    aria-label="Open navigation menu"
+                    class="nav-toggle"
+                    aria-label="Toggle menu"
                     aria-expanded="false"
-                    aria-controls="mobile-menu"
                 >
-                    <div class="toggle-icon">
-                        <span id="hb-top" class="line line-1"></span>
-                        <span id="hb-mid" class="line line-2"></span>
-                        <span id="hb-bot" class="line line-3"></span>
-                    </div>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </button>
-
-                <!-- Navigation Menu -->
-                <ul id="primaryMenu" class="primaryMenu hidden">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#company">Our Company</a></li>
-                    <li><a href="#">Pages</a></li>
-                </ul>
-            </nav>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Our Company</a></li>
+                        <li><a href="#">Pages</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <!-- Main Content -->
         <main>
             <!-- Hero Section -->
             <section id="hero" class="container">
-                <!-- Text Content -->
-                <div>
-                    <h1>We're Serious For Food.</h1>
-                    <p>
-                        We strive to provide a space where guests can connect
-                        with themselves and explore their full potential,
-                        offering a safe place.
-                    </p>
-                    <a href="#get-started"
-                        >Get Started
-                        <span><i class="fa-solid fa-right-long"></i></span
-                    ></a>
+                <div class="hero-container">
+                    <!-- Text Content -->
+                    <div class="text">
+                        <h1>We're Serious For Food.</h1>
+                        <p>
+                            We strive to provide a space where guests can
+                            connect with themselves and explore their full
+                            potential, offering a safe place.
+                        </p>
+                        <a class="btn btn-cta" href="#get-started"
+                            >Get Started
+                            <span><i class="fa-solid fa-right-long"></i></span
+                        ></a>
+                    </div>
                     <div class="brands">
                         <ul>
                             <li>
@@ -96,104 +94,114 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                <!-- Image Content -->
-                <div>
-                    <img
-                        src="./assets/images/hero-image.png"
-                        alt="Woman happily cooking a healthy meal in a bright kitchen"
-                    />
-                    <img src="./assets/images/Polcadot.png" alt="" />
-                    <div class="reviews">
-                        <div class="rating">
-                            <p>5.0 Rating</p>
-                            <span>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                        </div>
-                        <div class="review">
-                            <img
-                                src="./assets/images/hero-ratting-profile.png"
-                                alt="Review givgers profile picture"
-                            />
-                            <p>Good Quality Product</p>
+                    <!-- Image Content -->
+                    <div class="image">
+                        <img
+                            class="main-image"
+                            src="./assets/images/hero-image.png"
+                            alt="Woman happily cooking a healthy meal in a bright kitchen"
+                        />
+                        <img
+                            class="dots-image"
+                            src="./assets/images/Polcadot.png"
+                            alt=""
+                        />
+                        <div class="reviews">
+                            <div class="rating">
+                                <p>5.0 Rating</p>
+                                <span>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                            </div>
+                            <div class="review">
+                                <img
+                                    src="./assets/images/hero-ratting-profile.png"
+                                    alt="Review givgers profile picture"
+                                />
+                                <p>Good Quality Product</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <hr />
 
-            <!-- Stats Section -->
+            <!-- Features Section -->
             <section class="container">
-                <div>
-                    <div>
+                <div class="features-container">
+                    <div class="feature">
                         <i class="fa-solid fa-truck"></i>
-                        <div>
-                            <h4>Free Shipping</h4>
+                        <div class="feature-text">
+                            <h3>Free Shipping</h3>
                             <p>Orders Over $140</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="feature">
                         <i class="fa-solid fa-wallet"></i>
-                        <div>
-                            <h2>Quick Payment</h2>
+                        <div class="feature-text">
+                            <h3>Quick Payment</h3>
                             <p>100% Secure Payment</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="feature">
                         <i class="fa-solid fa-percent"></i>
-                        <div>
-                            <h2>Special Promo</h2>
+                        <div class="feature-text">
+                            <h3>Special Promo</h3>
                             <p>Get Special Promo</p>
                         </div>
                     </div>
-                    <div>
+                    <div class="feature">
                         <i class="fa-solid fa-headphones"></i>
-                        <div>
-                            <h2>24/7 Support</h2>
+                        <div class="feature-text">
+                            <h3>24/7 Support</h3>
                             <p>Ready Support</p>
                         </div>
                     </div>
                 </div>
             </section>
+            <hr />
 
             <!-- Healthy Food Section -->
             <section id="about" class="container">
                 <!-- Image -->
-                <div>
-                    <img
-                        src="./assets/images/benefit-image.png"
-                        alt="A beautiful assortment of fresh green vegetables"
-                    />
-                </div>
-                <!-- Text -->
-                <div>
-                    <p>Our Benefit</p>
-                    <h2>The More Healthy Food The Better</h2>
-                    <ul>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
-                            <span>Be Alive With Veggie Food.</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
-                            <span>It's The Place To Be.</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
-                            <span>Nonstop Veggie Food</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
-                            <span>The Best Silk Dish In Town</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
-                            <span>Truffles, Egg & Pumpkin Spice</span>
-                        </li>
-                    </ul>
+                <div class="healthy-food">
+                    <div class="main-image">
+                        <img
+                            src="./assets/images/benefit-image.png"
+                            alt="A beautiful assortment of fresh green vegetables"
+                        />
+                    </div>
+                    <!-- Text -->
+                    <div class="healthy-text">
+                        <p>Our Benefit</p>
+                        <h2>The More Healthy Food The Better</h2>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Be Alive With Veggie Food.</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>It's The Place To Be.</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Nonstop Veggie Food</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>The Best Silk Dish In Town</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                <span>Truffles, Egg & Pumpkin Spice</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
