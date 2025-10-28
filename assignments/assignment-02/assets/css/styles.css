@@ -1,0 +1,103 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
+/* Common CSS */
+
+:root {
+    --primary-color: #06c167;
+    --text-color: #1d1d1f;
+    --light-color: #394149;
+    --bg-color: #f3fcf7;
+    --color-white: #fff;
+    --color-black: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Header */
+header {
+    padding: 24px 0 48px 0;
+    min-height: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+button#menuToggle {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    position: relative;
+    z-index: 50;
+    /* border: 2px solid var(--primary-color); */
+    border: none;
+}
+
+.toogle-icon {
+    display: block;
+    width: 1.4rem;
+    height: 1rem;
+    position: relative;
+}
+
+.line {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.125rem;
+    width: 100%;
+    background-color: var(--primary-color);
+    top: 0.25rem;
+    transition: transform 0.3s;
+}
+
+@media screen and (min-width: 768px) {
+    button#menuToggle {
+        display: none;
+    }
+
+    .primary-menu {
+        display: flex;
+    }
+}
