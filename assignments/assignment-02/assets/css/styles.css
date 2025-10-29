@@ -60,11 +60,16 @@ input {
     padding: 1.5rem 4.8rem 1.5rem 5.63rem;
 }
 
+.btn i {
+    margin-left: 0.5rem;
+}
+
 hr {
     width: 80%;
-    height: 1px;
+    height: 2px;
     margin: 5rem auto;
-    background-color: #707070;
+    background-color: #e7e7e7;
+    border: none;
 }
 
 /* Header */
@@ -208,9 +213,13 @@ hr {
     order: 1;
 }
 
-#hero .text h1 {
+/* #hero .text h1 {
     font-size: 3.2rem;
     color: var(--text-color);
+} */
+
+#hero .text h1 {
+    font-size: clamp(3.2rem, 4.7vw, 4.7rem);
 }
 
 #hero .text p {
@@ -221,6 +230,14 @@ hr {
 
 #hero .text .btn-cta {
     margin-top: 1.5rem;
+    border: 2px solid var(--primary-color);
+}
+
+#hero .text .btn-cta:hover {
+    background-color: var(--color-white);
+    color: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    border: 2px solid var(--primary-color);
 }
 
 #hero .brands {
@@ -285,7 +302,7 @@ hr {
     background-color: var(--color-white);
     padding: 0.9rem;
     border-radius: 3rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 #hero .image .reviews .rating i {
@@ -331,14 +348,21 @@ hr {
 }
 
 .features-container .feature .feature-text p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
     margin-top: 0.5rem;
 }
 
-/* Healthy Food Sectio */
-#about {
+/* Healthy Food Section */
+#benefits {
     margin-top: 5rem;
+}
+
+.healthy-food {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .healthy-food .main-image img {
@@ -351,7 +375,7 @@ hr {
 }
 
 .healthy-text p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
 }
 
@@ -374,7 +398,484 @@ hr {
     color: var(--primary-color);
     font-weight: 900;
     margin-right: 0.75rem;
+    font-size: 1.5rem;
 }
+
+/* Stats Section */
+#stats {
+    margin-top: 5rem;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#stats .main-image img {
+    width: 100%;
+}
+
+.stats-text {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-text p {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.stats-text h2 {
+    font-size: 2.19rem;
+    font-weight: 500;
+}
+
+.stats-text .foods-stats {
+    margin-top: 3.3rem;
+    margin-bottom: 4.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.food-stat h3 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.food-stat p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+#stats a.btn {
+    margin: 0 auto;
+    padding: 1.875rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 2px solid var(--primary-color);
+}
+
+#stats a.btn:hover {
+    background-color: var(--color-white);
+    color: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+/* Variety Foods Section */
+#food-menu {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+#food-menu .subheading {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#food-menu h2 {
+    font-size: 2.19rem;
+    font-weight: 500;
+}
+
+.food-menus {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.food-menus article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow);
+    /* padding: 1.5rem; */
+    background-color: var(--color-white);
+    border-radius: 0.5rem;
+    text-align: left;
+}
+
+.food-menus article:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+}
+
+.food-menus article img {
+    width: 90%;
+    height: 18.25rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.food-menus article .food-info {
+    width: 100%;
+    height: 18.25rem;
+    border: 2px solid var(--primary-color);
+}
+
+.food-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.food-info > * {
+    margin: 2.375rem;
+}
+
+.food-info h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    max-width: 60%;
+}
+
+.food-info p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-color);
+    max-width: 50%;
+}
+
+.food-info a {
+    background-color: #f0ede2;
+    padding: 0.68rem;
+    color: var(--primary-color);
+}
+
+.food-info a:hover {
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Popular Foods Section */
+#popular {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+#popular .subheading {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#popular h2 {
+    font-size: 2.19rem;
+    font-weight: 500;
+}
+
+.popular-cards {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.3rem;
+}
+
+.popular-card {
+    /* box-shadow: var(--shadow); */
+    /* border-radius: 0.5rem; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.6rem;
+    border: 2px solid rgba(118, 118, 117, 0.25);
+}
+
+.popular-card:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+    border-color: var(--primary-color);
+}
+
+.popular-card img {
+    width: 70%;
+}
+
+.popular-card .stars {
+    margin-top: 1rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.popular-card-info {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.popular-card-info h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.popular-card-info p {
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.popular-card-info p .original {
+    text-decoration: line-through;
+    color: #767675;
+    margin-right: 1rem;
+}
+
+.popular-card-info p .discount {
+    color: var(--primary-color);
+}
+
+.popular-card-info a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 1.125rem 1.875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.popular-card-info a:hover {
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    border-radius: 3px;
+}
+
+/* CTA Section */
+#get-started {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.bg-image {
+    position: relative;
+    width: 100%;
+    height: 29rem;
+}
+
+.bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.cta p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--color-white);
+    background-color: var(--primary-color);
+    padding: 1.125rem 4.9rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    transition: background-color 0.3s ease;
+}
+
+.cta a:hover {
+    background-color: var(--color-white);
+    color: var(--primary-color);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-top-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.footer-top-info p {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+    max-width: 70%;
+    margin: auto;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-social a {
+    color: var(--color-black);
+}
+
+.footer-social a:hover {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.footer-navs {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-direction: column;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2.6rem;
+}
+
+.footer-nav h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-nav ul li a {
+    font-size: 1rem;
+    color: var(--light-color);
+    font-weight: 400;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.subscription {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    margin-top: 5rem;
+    width: 100%;
+}
+
+.subscription h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.subscription p {
+    font-size: 1rem;
+    color: var(--light-color);
+    font-weight: 400;
+}
+
+.subscription form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+}
+
+.subscription form input {
+    padding: 1rem;
+    width: 100%;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.subscription form input[type="email"] {
+    background-color: #f0f1ec;
+}
+
+.form-btn {
+    border: 2px solid var(--primary-color) !important;
+}
+
+.form-btn:hover {
+    background-color: #f0f1ec;
+    color: var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.footer-bottom {
+    margin-bottom: 2rem;
+}
+
+.footer-bottom p {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* Media Queries */
 
 @media screen and (min-width: 768px) {
     .nav-toggle {
@@ -398,13 +899,239 @@ hr {
     }
 
     /* Hero Section */
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 2rem;
+        min-height: 520px;
+    }
+
+    #hero .text {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: left;
+        align-self: start;
+        padding-right: 1rem;
+        max-width: 90%;
+        margin-top: 7rem;
+    }
+
+    #hero .text .btn-cta {
+        text-align: center;
+        padding: 1.5rem 2rem;
+        display: inline-block;
+    }
+
+    #hero .brands {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: center;
+        padding-right: 1rem;
+        margin-top: 0;
+    }
+
+    #hero .image {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+    }
+
+    #hero .image .main-image {
+        width: 85%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+    }
+
+    #hero .image .reviews {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #hero .image .reviews .rating {
+        position: relative;
+        top: 50%;
+        left: -91%;
+    }
+
+    #hero .image .reviews .review {
+        position: relative;
+        right: -72%;
+    }
+
+    .brands ul {
+        justify-content: flex-start;
+        gap: 1.25rem;
+    }
+
     .brands ul li {
-        flex: 0 0 calc(33.333% - 1rem);
+        flex: 0 0 auto;
+        width: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brands ul li img {
+        max-width: 140px;
+        height: auto;
+    }
+
+    #hero .text h1 {
+        font-size: clamp(2.4rem, 3.6vw, 3.6rem);
     }
 
     /* Features Section */
     .features-container .feature {
-        flex: 0 0 calc(25% - 1rem);
-        flex-wrap: nowrap;
+        flex: 0 0 calc(25% - 1.5rem);
+    }
+
+    /* Healthy Food Section */
+    .healthy-food {
+        flex-direction: row;
+    }
+
+    .healthy-text {
+        text-align: left;
+    }
+
+    .healthy-text p,
+    .healthy-text h2 {
+        margin-left: 4rem;
+    }
+
+    /* Stats Section */
+    .stats-container {
+        flex-direction: row;
+    }
+
+    .stats-container .main-image {
+        order: 2;
+        flex: 1;
+    }
+
+    .stats-container .stats-text {
+        order: 1;
+        flex: 2;
+    }
+
+    .stats-text {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .stats-text .foods-stats {
+        flex-direction: row;
+    }
+
+    .stats-text a.btn {
+        margin-left: 0 !important;
+    }
+
+    /* Variety Foods Section */
+    .food-menus article {
+        flex-direction: row;
+    }
+
+    .food-menus article img {
+        width: 100%;
+    }
+
+    .article-2 img,
+    .article-4 img {
+        order: 2;
+    }
+
+    .food-info > * {
+        margin: 1rem;
+    }
+
+    .food-info h3,
+    .food-info p {
+        max-width: 100%;
+    }
+
+    /* Popular Section */
+    .popular-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.875rem;
+    }
+
+    .popular-card {
+        flex: 0 0 calc(50% - 1rem);
+    }
+
+    /* CTA Section */
+    .cta h2 {
+        font-size: 3.75rem;
+    }
+
+    /* Footer Section */
+    .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .footer-top-info {
+        align-items: flex-start;
+        flex: 1;
+    }
+
+    .footer-top-info p {
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .top-right {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: flex-start;
+        flex: 2;
+        text-align: left;
+    }
+
+    .top-right .footer-nav {
+        flex: 1;
+    }
+
+    .top-right .subscription {
+        flex: 2;
+        margin-top: 0;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    /* Variety Foods Section */
+    .foods-container {
+        width: 95%;
+    }
+
+    .food-menus {
+        flex-direction: row;
+    }
+    .food-menus article {
+        flex-direction: row;
+        flex: 0 0 calc(50% - 1.5rem);
+    }
+
+    .article-3 img,
+    .article-4 img {
+        order: 2;
+    }
+
+    /* Popular Section */
+    .popular-card {
+        flex: 0 0 calc(25% - 1.5rem);
     }
 }
