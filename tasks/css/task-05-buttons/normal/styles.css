@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f7f8fa;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.brand {
+  text-align: center;
+}
+
+.brand h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Shared button styles */
+.btn {
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 4px;
+  font-weight: 600;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+
+.btn-normal {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 2px;
+}
+
+.btn-lg {
+  padding: 10px 60px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+}
+
+.btn-xl {
+  padding: 18px 36px;
+  font-size: 1.3rem;
+  border-radius: 4px;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 2px solid #111;
+  color: #111;
+}
+
+/* Amazon */
+.amazon {
+  background: #ffbd00;
+  color: #111;
+}
+
+.amazon:hover {
+  background: #f2a900;
+}
+
+/* Techcrunch */
+.techcrunch {
+  background: #00d084;
+  color: #fff;
+}
+
+.techcrunch:hover {
+  background: #00b06c;
+}
+
+.tech.btn-outline:hover {
+  background: #00b06c;
+  color: #fff;
+  border-color: #00b06c;
+}
+
+/* Producthunt */
+.producthunt {
+  background: #da552f;
+  color: #fff;
+}
+
+.producthunt:hover {
+  background: #c14422;
+}
+
+.product.btn-outline:hover {
+  background: #da552f;
+  color: #fff;
+  border-color: #da552f;
+}
+
+/* Indie Hackers */
+.indie {
+  background: #ec3750;
+  color: #fff;
+}
+
+.indie:hover {
+  background: #d02f44;
+}
+
+.in.btn-outline:hover {
+  background: #ec3750;
+  color: #fff;
+}
+
+/* Buy me a coffee */
+.coffee {
+  background: #ffdd00;
+  color: #111;
+  border-radius: 20px;
+}
+
+.coffee:hover {
+  background: #f2cc00;
+}
+
+.coffee-white {
+  background: #e9e7e7;
+  color: #111;
+  border-radius: 15px;
+}
+
+.coffee-white:hover {
+  background: #ffdd00;
+  color: #111;
+}
+
+/* HEY */
+.hey {
+  background: #3b82f6;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.hey:hover {
+  background: #2563eb;
+}
+
+/* Slack */
+.slack {
+  background: #4a154b;
+  color: #fff;
+}
+
+.slack:hover {
+  background: #3a0e3b;
+}
+
+.sl.btn-outline:hover {
+  background: #4a154b;
+  color: #fff;
+  border-color: #4a154b;
+}
+
+.slack-white {
+  background: #fff;
+  border: 2px solid #ccc;
+}
+
+.slack-white:hover {
+  background: #f2f2f2;
+}
+
+/* RemoteOK */
+.remoteok {
+  background: #ff5a5f;
+  color: #fff;
+  border-color: #e54e52;
+}
+
+.remoteok:hover {
+  background: #e54e52;
+}
+
+.remo.btn-outline {
+  border-color: #e54e52;
+}
+
+.remo.btn-outline:hover {
+  background: #ff5a5f;
+  color: #fff;
+}
