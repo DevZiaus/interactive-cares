@@ -1,4 +1,4 @@
-# Assignment : Assignment 02
+# Assignment : 02
 
 ### Name : Md Ziaus Samad
 
