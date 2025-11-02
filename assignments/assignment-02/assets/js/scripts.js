@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close nav when clicking a link (on mobile)
     nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
-            toggle.classList.remove("active");
+            toggle.classList.remove("toggled");
             nav.classList.remove("open");
             toggle.setAttribute("aria-expanded", false);
         });
