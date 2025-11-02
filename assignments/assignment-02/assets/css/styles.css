@@ -72,7 +72,9 @@ hr {
     border: none;
 }
 
-/* Header */
+/*==================================
+            Header/Navbar
+==================================*/
 .header {
     padding: 1.5rem 0;
     min-height: 2rem;
@@ -121,12 +123,9 @@ hr {
     gap: 1.5rem;
 }
 
-.main-nav ul li {
+.main-nav ul li a {
     position: relative;
-    transition: 0.3s;
-}
-
-.main-nav a {
+    display: inline-block;
     text-decoration: none;
     font-weight: 600;
     color: #222;
@@ -134,32 +133,26 @@ hr {
     transition: color linear 0.3s;
 }
 
-.main-nav ul li::after {
+.main-nav ul li a::after {
     content: "";
-    width: 0.375rem;
-    height: 0.375rem;
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
     border-radius: 50%;
     background-color: var(--primary-color);
-    display: none;
-    position: absolute;
-    left: calc(50%);
-    bottom: -10px;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
-.main-nav ul li:hover a {
+.main-nav ul li a:hover {
     color: var(--primary-color);
 }
 
-.main-nav ul li:hover::after {
-    display: inline-block;
-}
-
-.main-nav ul li a.active {
-    color: var(--primary-color);
-}
-
-.main-nav ul li:has(a.active)::after {
-    display: block;
+.main-nav ul li a:hover::after {
+    width: 0.375rem;
+    height: 0.375rem;
 }
 
 /* Nav toggle (hamburger) */
@@ -206,7 +199,19 @@ hr {
     display: flex;
 }
 
-/* Hero Section */
+/* Active Link */
+.main-nav ul li a.active {
+    color: var(--primary-color);
+}
+
+.main-nav ul li a.active::after {
+    width: 0.375rem;
+    height: 0.375rem;
+}
+
+/*==================================
+            Hero Section
+==================================*/
 #hero {
     margin-top: 1.5rem;
 }
@@ -322,7 +327,9 @@ hr {
     width: 2.5rem;
 }
 
-/* Features Section */
+/*==================================
+          Features Section
+==================================*/
 .features-container {
     display: flex;
     justify-content: space-between;
@@ -362,7 +369,9 @@ hr {
     margin-top: 0.5rem;
 }
 
-/* Healthy Food Section */
+/*==================================
+        Healthy Food Section
+==================================*/
 #benefits {
     margin-top: 5rem;
 }
@@ -410,7 +419,9 @@ hr {
     font-size: 1.5rem;
 }
 
-/* Stats Section */
+/*==================================
+            Stats Section
+==================================*/
 #stats {
     margin-top: 5rem;
 }
@@ -482,7 +493,9 @@ hr {
     border: 2px solid var(--primary-color);
 }
 
-/* Variety Foods Section */
+/*==================================
+       Variety Foods Section
+==================================*/
 #food-menu {
     margin-top: 8rem;
     margin-bottom: 5rem;
@@ -574,7 +587,9 @@ hr {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Popular Foods Section */
+/*==================================
+       Popular Foods Section
+==================================*/
 #popular {
     margin-top: 8rem;
     margin-bottom: 4rem;
@@ -670,7 +685,9 @@ hr {
     border-radius: 3px;
 }
 
-/* CTA Section */
+/*==================================
+            CTA Section
+==================================*/
 #get-started {
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -739,7 +756,9 @@ hr {
     color: var(--primary-color);
 }
 
-/* Footer Section */
+/*==================================
+           Footer Section
+==================================*/
 footer {
     text-align: center;
 }
@@ -885,7 +904,9 @@ footer {
     font-weight: 400;
 }
 
-/* Media Queries */
+/*==================================
+        Media Queries 768px
+==================================*/
 
 @media screen and (min-width: 768px) {
     .nav-toggle {
@@ -1121,6 +1142,10 @@ footer {
         align-items: flex-start;
     }
 }
+
+/*==================================
+        Media Queries 992px
+==================================*/
 
 @media screen and (min-width: 992px) {
     /* Hero Section */
