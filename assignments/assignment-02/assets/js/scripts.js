@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector(".main-nav");
 
     toggle.addEventListener("click", () => {
-        toggle.classList.toggle("active");
+        toggle.classList.toggle("toggled");
         nav.classList.toggle("open");
         const expanded = toggle.classList.contains("active");
         toggle.setAttribute("aria-expanded", expanded);
@@ -15,6 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
             toggle.classList.remove("active");
             nav.classList.remove("open");
             toggle.setAttribute("aria-expanded", false);
+        });
+    });
+
+    // Menu Link Active State Management
+    nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            nav.querySelectorAll("a").forEach((navLink) => {
+                navLink.classList.remove("active");
+            });
+            link.classList.add("active");
         });
     });
 });
