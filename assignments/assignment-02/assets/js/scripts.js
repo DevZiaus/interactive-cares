@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.addEventListener("click", () => {
         toggle.classList.toggle("toggled");
         nav.classList.toggle("open");
-        const expanded = toggle.classList.contains("active");
+        const expanded = toggle.classList.contains("toggled");
         toggle.setAttribute("aria-expanded", expanded);
     });
 
