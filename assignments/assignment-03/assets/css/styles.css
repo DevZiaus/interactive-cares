@@ -1,0 +1,301 @@
+/*==================================
+        Google Fonts
+==================================*/
+@import url("https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;600;700;900&display=swap");
+
+/*==================================
+        CSS Variables
+==================================*/
+:root {
+    --color-primary: #0095da;
+    --color-secondary: #3c4b58;
+    --color-hover: #e68324;
+    --color-text: #131212;
+    --color-dark: #1b1b1b;
+    --color-light: #ddd;
+    --color-heading: #05233e;
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Aleo", serif;
+}
+
+.dark {
+    --color-primary: #0095da;
+    --color-secondary: #09345c;
+    --color-hover: #e68324;
+    --color-text: #c7c7c7;
+    --color-dark: #cfcfcf;
+    --color-light: #181818;
+    --color-heading: #3a81be;
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Aleo", serif;
+}
+
+/*==================================
+        Global Styles
+==================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body,
+html {
+    font-size: 62.5%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    margin-bottom: 1rem;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    font-family: var(--font-body);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-light);
+}
+
+input,
+textarea {
+    border: 0.1rem solid var(--color-light);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+}
+
+/*==================================
+        Utility Classes
+==================================*/
+.container {
+    max-width: 140rem;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+}
+
+/*==================================
+            Header/Navbar
+==================================*/
+header {
+    position: sticky;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 1.2rem;
+    top: 0;
+    backdrop-filter: blur(0.5rem);
+    background-color: var(--color-secondary);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    margin-top: 0;
+    padding-top: 0;
+    max-width: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar .logo img {
+    width: 100%;
+    height: auto;
+}
+
+.navbar .logo span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.navbar .nav-toggler {
+    flex-direction: column;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    order: 3;
+}
+
+.navbar .nav-toggler .line {
+    width: 2.8rem;
+    height: 0.3rem;
+    background-color: var(--color-primary);
+    margin: 0.4rem 0;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.navbar .nav-toggler:hover .line {
+    background-color: var(--color-hover);
+}
+
+.navbar .nav-toggler .line-2 {
+    margin-left: -0.25rem;
+}
+
+.navbar .nav-toggler .line-1.rotate {
+    transform: rotate(45deg) translate(0.5rem, 0.2rem);
+}
+
+.navbar .nav-toggler .line-2.none {
+    opacity: 0;
+}
+
+.navbar .nav-toggler .line-3.rotate {
+    transform: rotate(-45deg) translate(0.5rem, -0.2rem);
+}
+
+.navbar .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar .nav-menu.toggled {
+    display: flex;
+    position: absolute;
+    top: 7rem;
+    right: 0;
+    width: 60%;
+    background-color: var(--color-secondary);
+    padding: 1rem 0;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    color: var(--color-light);
+    height: 100vh;
+}
+
+.navbar .nav-menu .nav-item .nav-link {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    margin: 0;
+    display: inline-block;
+}
+
+.navbar .nav-menu .nav-item .nav-link:hover,
+.navbar .nav-menu .nav-item .nav-link.active {
+    color: var(--color-hover);
+}
+
+.navbar .theme-toggle {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+    order: 2;
+}
+
+.sun-icon,
+.moon-icon {
+    fill: var(--color-primary);
+    transition: fill 0.3s ease;
+    cursor: pointer;
+}
+
+.sun-icon:hover,
+.moon-icon:hover {
+    fill: var(--color-hover);
+}
+
+/*==================================
+            Footer Section
+==================================*/
+footer {
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+    text-align: center;
+    padding: 1rem 0;
+}
+footer p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+}
+
+footer p a {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+footer p a:hover {
+    color: var(--color-hover);
+}
+
+/*==================================
+        Media Queries
+==================================*/
+@media (min-width: 768px) {
+    .navbar .nav-menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar .nav-toggler {
+        display: none;
+    }
+}
