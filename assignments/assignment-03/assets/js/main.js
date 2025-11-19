@@ -129,6 +129,77 @@ function setFooterYear() {
     document.querySelector(".current-year").textContent = currentYear;
 }
 
+// Typing Effect Function
+function startTypingEffect(selector, textArray) {
+    const textElement = document.querySelector(selector);
+
+    // Safety check: stop if element doesn't exist
+    if (!textElement) return;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = textArray[wordIndex];
+
+        // 1. Handle Typing vs Deleting logic
+        if (isDeleting) {
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        // 2. Determine Typing Speed
+        let typeSpeed = 100; // Normal typing speed
+
+        if (isDeleting) {
+            typeSpeed = 50; // Deleting is faster
+        }
+
+        // 3. Check bounds to switch states
+        if (!isDeleting && charIndex === currentWord.length) {
+            // Finished typing the word, pause before deleting
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Finished deleting, move to next word
+            isDeleting = false;
+            wordIndex++;
+
+            // Loop back to start
+            if (wordIndex >= textArray.length) {
+                wordIndex = 0;
+            }
+            typeSpeed = 500; // Pause before typing next word
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    // Initialize the loop
+    type();
+}
+
+//Invoke the startTypingEffect function on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+    const myTitles = [
+        "Full-stack developer",
+        "MERN Stack Developer",
+        "Front-End Developer",
+        "Back-End Developer",
+    ];
+
+    startTypingEffect(".intro-role", myTitles);
+});
+
+//Invoke navToggle function
 navToggle();
+
+// Invoke themeToggler function
 themeToggler();
+
+// invoke setFooterYear function
 setFooterYear();
