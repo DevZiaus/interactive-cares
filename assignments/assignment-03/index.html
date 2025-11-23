@@ -35,16 +35,29 @@
             referrerpolicy="no-referrer"
         />
 
+        <!-- DevIcons -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+
         <!-- Stylesheet -->
         <link rel="stylesheet" href="./assets/css/styles.css" />
     </head>
     <body>
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-line-1">
+                <div class="preloader-line-2"></div>
+            </div>
+        </div>
         <!-- Header -->
         <header id="header">
             <div class="container">
                 <nav class="navbar">
                     <a href="/" class="logo">
-                        <img src="assets/images/logo.png" alt="Logo" />
+                        <img src="./assets/images/logo.svg" alt="Logo" />
                         <span>DevZiaus</span>
                     </a>
 
@@ -67,7 +80,7 @@
                             <a href="#services" class="nav-link">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#blog" class="nav-link">Blog</a>
+                            <a href="#projects" class="nav-link">Projects</a>
                         </li>
                         <li class="nav-item">
                             <a href="#contact" class="nav-link">Contact</a>
@@ -106,24 +119,31 @@
 
         <!--   Main Area -->
         <main id="main">
-            <section class="hero-section">
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section container">
                 <h1 class="hero-heading">Developer</h1>
 
                 <div class="hero-content">
                     <div class="profile-card">
                         <div class="card-inner">
-                            <img
-                                src="./assets/images/logo.png"
-                                alt="DevZiaus"
-                                class="profile-avatar"
-                            />
+                            <div class="profile-avatar-outer">
+                                <div class="profile-avatar-image">
+                                    <img
+                                        src="./assets/images/profile.jpg"
+                                        alt="DevZiaus"
+                                        class="profile-avatar"
+                                    />
+                                </div>
+                            </div>
                             <h2 class="profile-name">DevZiaus</h2>
                             <p class="profile-title">Full-stack developer</p>
 
                             <ul class="contact-list">
                                 <li>
                                     <i class="fas fa-envelope"></i>
-                                    dev.ziaus@gmail.com
+                                    <a href="mailto:dev.ziaus@gmail.com"
+                                        >dev.ziaus@gmail.com</a
+                                    >
                                 </li>
                                 <li>
                                     <i class="fas fa-map-marker-alt"></i>
@@ -135,7 +155,11 @@
                                 </li>
                                 <li>
                                     <i class="fas fa-globe"></i>
-                                    devziaus.github.io
+                                    <a
+                                        href="https://devziaus.github.io"
+                                        target="_blank"
+                                        >devziaus.github.io</a
+                                    >
                                 </li>
                             </ul>
 
@@ -156,7 +180,7 @@
                         <div class="hero-intro-heading">
                             <p class="intro-tagline">&lt;h1&gt;</p>
                             <hgroup>
-                                <h2 class="intro-greeting">Hey</h2>
+                                <h2 class="intro-greeting">Hey!</h2>
                                 <h2 class="intro-name">I'm DevZiaus,</h2>
                                 <h2 class="intro-role">Full-Stack Developer</h2>
                             </hgroup>
@@ -183,7 +207,7 @@
                             <div class="mouse">
                                 <div class="wheel"></div>
                             </div>
-                            <div class="line"></div>
+                            <div class="scroll-line"></div>
                             <div class="circle"></div>
                         </div>
                     </div>
@@ -210,18 +234,560 @@
                     </div>
                 </div>
             </section>
+
+            <!-- About Section -->
+            <section id="about">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">About Me</h2>
+                    </div>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p class="intro-tagline">&lt;p&gt;</p>
+                            <h3>Hello!</h3>
+                            <p>
+                                I'm DevZiaus, a Full Stack Developer with over 5
+                                years of experience in building web
+                                applications. I specialize in the
+                                <span>MERN and PERN</span>
+                                stacks, creating dynamic and responsive websites
+                                that deliver exceptional user experiences.
+                            </p>
+                            <p>
+                                I am a highly motivated individual and eternal
+                                optimist dedicated to writing clear, concise,
+                                robust code that works. Striving to never stop
+                                learning and improving.
+                            </p>
+                            <p>
+                                When I'm not coding, I enjoy watching
+                                <span>movies, cricket matches</span>,
+                                contributing to
+                                <span>open source projects</span> and sharing my
+                                knowledge through <span>blogging</span>. Let's
+                                connect and create something amazing together!
+                            </p>
+                            <p class="intro-tagline">&lt;/p&gt;</p>
+                        </div>
+                        <div class="about-image">
+                            <img
+                                src="./assets/images/about.jpg"
+                                alt="About Me"
+                            />
+                        </div>
+                    </div>
+                    <div class="cta">
+                        <a class="cta-button" href="#contact"
+                            ><span>Hire Me</span></a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">Skills {}</h2>
+                    </div>
+
+                    <div class="skills-content">
+                        <div class="skill-items">
+                            <i class="fa-brands fa-js"></i>
+                            <i class="fa-brands fa-react"></i>
+                            <i class="devicon-nextjs-plain"></i>
+                            <i class="fa-brands fa-node-js"></i>
+                            <i class="devicon-express-original"></i>
+                            <i class="devicon-mongodb-plain"></i>
+                            <i class="devicon-postgresql-plain"></i>
+                            <i class="fa-brands fa-html5"></i>
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <i class="devicon-tailwindcss-original"></i>
+                            <i class="devicon-bootstrap-plain"></i>
+                            <i class="fa-brands fa-git-alt"></i>
+                            <i class="fa-brands fa-github"></i>
+                            <i class="devicon-googlecloud-plain"></i>
+                            <i class="fa-brands fa-linux"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">My Services</h2>
+                    </div>
+
+                    <div class="services-content">
+                        <div class="card-wrapper">
+                            <div class="service-card">
+                                <h3 class="service-name">
+                                    Front-End Development
+                                </h3>
+                                <hr />
+                                <i class="fa-brands fa-react"></i>
+                                <p class="service-description">
+                                    Crafting user-friendly interfaces and
+                                    engaging user experiences that align with
+                                    your brand identity.
+                                </p>
+                            </div>
+                            <a href="#" class="action-btn">
+                                <i class="arrow"></i>
+                            </a>
+                        </div>
+
+                        <div class="card-wrapper">
+                            <div class="service-card">
+                                <h3 class="service-name">API Development</h3>
+                                <hr />
+                                <i class="fa-brands fa-node-js"></i>
+                                <p class="service-description">
+                                    Building robust and scalable backend systems
+                                    using Node.js, Express, and databases like
+                                    MongoDB and PostgreSQL.
+                                </p>
+                            </div>
+                            <a href="#" class="action-btn">
+                                <i class="arrow"></i>
+                            </a>
+                        </div>
+
+                        <div class="card-wrapper">
+                            <div class="service-card">
+                                <h3 class="service-name">
+                                    Full-Stack Development
+                                </h3>
+                                <hr />
+                                <i class="fa-solid fa-code"></i>
+                                <p class="service-description">
+                                    Developing end-to-end web applications that
+                                    seamlessly integrate front-end and back-end
+                                    technologies.
+                                </p>
+                            </div>
+                            <a href="#" class="action-btn">
+                                <i class="arrow"></i>
+                            </a>
+                        </div>
+
+                        <div class="card-wrapper">
+                            <div class="service-card">
+                                <h3 class="service-name">DevOps</h3>
+                                <hr />
+                                <i class="fa-solid fa-cloud"></i>
+                                <p class="service-description">
+                                    Deploying and managing applications on cloud
+                                    platforms to ensure reliability and
+                                    scalability.
+                                </p>
+                            </div>
+                            <a href="#" class="action-btn">
+                                <i class="arrow"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Experience Section -->
+            <section id="experience">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">Experience</h2>
+                    </div>
+
+                    <div class="experience-content">
+                        <div class="timeline">
+                            <div class="timeline-item item-one">
+                                <div class="timeline-icon">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3 class="timeline-title">
+                                        Senior Full-Stack Developer
+                                    </h3>
+                                    <span class="timeline-date"
+                                        >Jan 2022 - Present</span
+                                    >
+                                    <p class="timeline-description">
+                                        Leading a team of developers to build
+                                        scalable web applications using MERN
+                                        stack technologies.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item item-two">
+                                <div class="timeline-icon">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3 class="timeline-title">
+                                        Full-Stack Developer
+                                    </h3>
+                                    <span class="timeline-date"
+                                        >Jun 2018 - Dec 2021</span
+                                    >
+                                    <p class="timeline-description">
+                                        Developed and maintained web
+                                        applications using React, Node.js,
+                                        Express, and MongoDB.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item item-three">
+                                <div class="timeline-icon">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3 class="timeline-title">
+                                        Junior Web Developer
+                                    </h3>
+                                    <span class="timeline-date"
+                                        >Jan 2016 - May 2018</span
+                                    >
+                                    <p class="timeline-description">
+                                        Assisted in the development of front-end
+                                        components and collaborated with senior
+                                        developers on various projects.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Portfolio Section -->
+            <section id="projects">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">Projects</h2>
+                    </div>
+
+                    <div class="projects-content">
+                        <div class="project-card">
+                            <div class="">
+                                <img
+                                    class="project-image"
+                                    src="./assets/images/next-ecom.png"
+                                    alt="Project 1"
+                                />
+                            </div>
+                            <div class="project-info">
+                                <h3 class="project-title">
+                                    E-commerce Website
+                                </h3>
+                                <p class="project-description">
+                                    A full-featured e-commerce platform built
+                                    with NextJS 15, featuring user
+                                    authentication, product management, and
+                                    payment integration.
+                                </p>
+                                <div class="project-links">
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >See Demo</a
+                                    >
+                                    <a
+                                        href="https://github.com/DevZiaus/nextjs15-ecommerce"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Source Code</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img
+                                src="./assets/images/mern-blog.png"
+                                alt="Project 2"
+                            />
+                            <div class="project-info">
+                                <h3 class="project-title">Blog Platform</h3>
+                                <p class="project-description">
+                                    A blogging platform developed using MERN
+                                    stack, allowing users to create, edit, and
+                                    share blog posts with a rich text editor.
+                                </p>
+                                <div class="project-links">
+                                    <a
+                                        href="#"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >See Demo</a
+                                    >
+                                    <a
+                                        href="https://github.com/DevZiaus/mern-stack-blog"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Source Code</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img
+                                class="project-image"
+                                src="./assets/images/next-blog.png"
+                                alt="Project 2"
+                            />
+                            <div class="project-info">
+                                <h3 class="project-title">
+                                    NextJS Mark Down Blog Platform
+                                </h3>
+                                <p class="project-description">
+                                    A blogging platform developed using Nextjs
+                                    and Markdown , allowing users to create,
+                                    edit, and share blog posts with a rich text
+                                    editor.
+                                </p>
+                                <div class="project-links">
+                                    <a
+                                        href="https://devziaus-blog-nextjs.vercel.app"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >See Demo</a
+                                    >
+                                    <a
+                                        href="https://github.com/DevZiaus/devziaus-blog-nextjs"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >Source Code</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">Latest Blog Posts</h2>
+                    </div>
+
+                    <div class="blog-content">
+                        <div class="blog-card">
+                            <img
+                                src="./assets/images/backend-development.webp"
+                                alt="Blog Post 1"
+                            />
+                            <div class="blog-info">
+                                <h3 class="blog-title">
+                                    Back-End Development: The Ultimate Guide to
+                                    Building Robust Web Applications
+                                </h3>
+                                <p class="blog-excerpt">
+                                    Discover everything about Back-End
+                                    Development, from databases to APIs, with
+                                    this in-depth guide covering skills, tools,
+                                    and best practices for 2024.
+                                </p>
+                                <a
+                                    href="https://devziaus-blog-nextjs.vercel.app/posts/comprehensive-guide-to-back-end-development"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >Read More <i class="fas fa-arrow-right"></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <img
+                                src="./assets/images/html-css-hacks.webp"
+                                alt="Blog Post 2"
+                            />
+                            <div class="blog-info">
+                                <h3 class="blog-title">
+                                    Top 10 Essential HTML and CSS Hacks for
+                                    Front-end Developers
+                                </h3>
+                                <p class="blog-excerpt">
+                                    Discover the top 10 essential HTML and CSS
+                                    hacks every front-end developer should know
+                                    in 2024. Boost speed, design, and
+                                    responsiveness with these pro tips.
+                                </p>
+                                <a
+                                    href="https://devziaus-blog-nextjs.vercel.app/posts/top-10-essential-html-and-css-hacks"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >Read More <i class="fas fa-arrow-right"></i
+                                ></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <img
+                                src="./assets/images/js-frameworks.webp"
+                                alt="Blog Post 3"
+                            />
+                            <div class="blog-info">
+                                <h3 class="blog-title">
+                                    Top 5 JavaScript Frameworks for Building
+                                    Responsive Web Applications
+                                </h3>
+                                <p class="blog-excerpt">
+                                    Build responsive web applications with the
+                                    best JavaScript frameworks. Learn about the
+                                    top 5 frameworks, their features, and how to
+                                    choose the right one for your next project.
+                                </p>
+                                <a
+                                    href="https://devziaus-blog-nextjs.vercel.app/posts/top-5-javascript-frameworks-for-building-responsive-web-app"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >Read More <i class="fas fa-arrow-right"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <div class="container section-container">
+                    <div class="section-title-outer">
+                        <h2 class="section-title">Get In Touch</h2>
+                    </div>
+
+                    <div class="contact-container">
+                        <div class="contact-text">
+                            <p>
+                                I'm currently open to new opportunities and
+                                collaborations. Whether you have a project in
+                                mind or just want to say hello, feel free to
+                                reach out!
+                            </p>
+                        </div>
+
+                        <div class="contact-content">
+                            <div class="contact-infos">
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span
+                                        ><a href="tel:+880-184-5362007"
+                                            >+880-184-5362007</a
+                                        ></span
+                                    >
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span
+                                        ><a href="mailto:dev.ziaus@gmail.com"
+                                            >dev.ziaus@gmail.com</a
+                                        ></span
+                                    >
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Bangladesh</span>
+                                </div>
+                            </div>
+
+                            <form autocomplete="off" class="contact-form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            required
+                                            id="name"
+                                            name="name"
+                                        />
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            required
+                                            id="email"
+                                            name="email"
+                                        />
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            name="subject"
+                                            required
+                                        />
+                                        <label for="subject">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group textarea">
+                                        <textarea
+                                            rows="5"
+                                            id="message"
+                                            name="message"
+                                            required
+                                        ></textarea>
+                                        <label for="message"
+                                            >Your Message</label
+                                        >
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-contact-form">
+                                    Send Message
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Footer Section -->
         <footer>
-            <div class="container">
+            <div class="container footer-container">
                 <p>
                     &copy; <span class="current-year"></span>
                     <a href="#" target="_blank">DevZiaus</a>. All rights
                     reserved.
                 </p>
+                <div class="social-links">
+                    <a href="https://github.com/DevZiaus" target="_blank"
+                        ><i class="fa-brands fa-github"></i
+                    ></a>
+                    <a
+                        href="https://www.linkedin.com/in/devziaus/"
+                        target="_blank"
+                        ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                    <a href="https://twitter.com/DevZiaus" target="_blank"
+                        ><i class="fa-brands fa-twitter"></i
+                    ></a>
+                    <a href="https://www.facebook.com/DevZiaus" target="_blank"
+                        ><i class="fa-brands fa-facebook-f"></i
+                    ></a>
+
+                    <a href="https://www.instagram.com/DevZiaus" target="_blank"
+                        ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                </div>
             </div>
         </footer>
+
+        <!-- back to top -->
+
+        <div class="back-to-top-outer">
+            <a class="back-to-top"
+                ><i class="fas fa-angle-double-right"></i>
+                <p class="percent"></p
+            ></a>
+        </div>
 
         <!-- JavaScript -->
         <script src="./assets/js/main.js"></script>
