@@ -1,1 +1,17 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Tailwind */
 @import 'tailwindcss';
+
+/* Extending themes */
+@theme {
+    --color-primary: #0095da;
+    --color-hover: #e68324;
+
+    --font-poppins: Poppins, sans-serif;
+
+    --shadow-2xs: 0 1px rgb(0 0 0 / 0.05);
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
