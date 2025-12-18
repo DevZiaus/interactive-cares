@@ -423,3 +423,238 @@ function getMaxProduct(arr) {
 // Example usage:
 const inputArray3 = [2, 3, 5, 6, 7];
 console.log(getMaxProduct(inputArray3));
+
+/***********
+ * Problem 13
+ * Write a function called "findPrimeNumbers" that takes an array of positive integers as input and
+ * returns a new array containing only the prime numbers from the original array.
+ * For example:
+ * Input: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+ * Output: [2, 3, 5, 7]
+ ***********/
+
+// function isPrime(num) {
+//   if (num <= 1) return false;
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) return false;
+//   }
+//   return true;
+// }
+
+// function findPrimeNumbers(arr) {
+//   const primeNumbers = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (isPrime(arr[i])) {
+//       primeNumbers.push(arr[i]);
+//     }
+//   }
+//   return primeNumbers;
+// }
+
+function findPrimeNumbers(arr) {
+    const primeNumber = [];
+    arr.forEach((num) => {
+        let isPrime = true;
+        if (num <= 1) {
+            isPrime = false;
+        }
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            primeNumber.push(num);
+        }
+    });
+    return primeNumber;
+}
+
+// Example usage:
+const inputArray4 = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(findPrimeNumbers(inputArray4));
+
+/***********
+ * Problem 14
+ * Write a program that prints a triangle asterisk (*). The number of rows in the triangle is determined
+ * by the user's input. Each row should contain a  string where the characters are repeated in a mirrored
+ * pattern.
+ * For example, if the user inputs 5, the program should print:
+ *      *
+ *    ***
+ *   ****
+ *  *****
+ * ******
+ ************/
+
+function printTriangle(rows) {
+    if (rows <= 0) {
+        console.log('Please provide a positive height for the triangle.');
+        return;
+    }
+
+    for (let i = 1; i <= rows; i++) {
+        let row = '';
+        for (let j = 1; j <= rows - i; j++) {
+            row += ' ';
+        }
+        for (let k = 1; k <= 2 * i - 1; k++) {
+            row += '*';
+        }
+        console.log(row);
+    }
+}
+
+// function printTriangle(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     let rowStr = ' '.repeat(rows - i) + '*'.repeat(2 * i - 1);
+//     console.log(rowStr);
+//   }
+// }
+
+// Example usage:
+printTriangle(5);
+
+/***********
+ * Problem 15
+ * Write a program that prints a triangle of palindromic strings. The number of rows in the triangle is
+ * determined by the user's input. Each row should contain a palindromic string where the characters are
+ * repeated in a mirrored pattern.
+ * For example, if the user inputs 5, the program should print:
+ *     1
+ *    232
+ *   34543
+ *   4567654
+ *  567898765
+ ***********/
+
+function printPalindromicTriangle(rows) {
+    if (rows <= 0) {
+        console.log('Please provide a positive height for the triangle.');
+        return;
+    }
+    for (let i = 1; i <= rows; i++) {
+        let row = '';
+        for (let j = 1; j <= rows - i; j++) {
+            row += ' ';
+        }
+        for (let k = 0; k < i; k++) {
+            row += i + k;
+        }
+        for (let l = i - 2; l >= 0; l--) {
+            row += i + l;
+        }
+        console.log(row);
+    }
+}
+
+// Example usage:
+printPalindromicTriangle(5);
+
+/***********
+ * Problem 16
+ * A Fibonacci number is a sequence of numbers in which each number is the sum of the two preceding ones,
+ * usually starting with 0 and 1. In mathematical terms, the Fibonacci sequence is defined as:
+ * F(n) = F(n-1) + F(n-2) for n > 1
+ * So, the Fibonacci sequence begins as follows: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, and so on. Each
+ * subsequent number in the sequence is the sum of the two preceding numbers. The Fibonacci sequence has
+ * numerous mathematical properties and applications in various fields, including mathematics, computer
+ * science, and nature.
+ * Task 1:
+ * Write a function called "fibonacciSequence" that takes a positive integer n as input and returns an
+ * array containing the first n numbers in the Fibonacci sequence.
+ * Sample Input: 8
+ * Sample Output: [0, 1, 1, 2, 3, 5, 8, 13]
+ * Task 2: Write a function called "isFibonacciNumber" that takes a number as input and returns true if
+ * the number is a Fibonacci number, and false otherwise.
+ * For example:
+ * Input: 8
+ * Output: true
+ * Input: 10
+ * Output: false
+ ***********/
+
+function fibonacciSequence(n) {
+    if (n <= 0) {
+        return [];
+    }
+    const fibSeq = [0, 1];
+    for (let i = 2; i < n; i++) {
+        fibSeq[i] = fibSeq[i - 1] + fibSeq[i - 2];
+    }
+    return fibSeq;
+}
+
+function isFibonacciNumber(num) {
+    if (num < 0) {
+        return false;
+    }
+    let a = 0;
+    let b = 1;
+    while (a < num) {
+        const temp = a;
+        a = b;
+        b = temp + b;
+    }
+    return a === num;
+}
+
+// Example usage:
+console.log(fibonacciSequence(8));
+console.log(isFibonacciNumber(8));
+console.log(isFibonacciNumber(10));
+
+/***********
+ * Problem 17
+ * Write a function called "findMedian" that takes an array of numbers as input and returns the median
+ * value of the numbers.
+ * For example:
+ * Input: [5, 2, 8, 1, 9]
+ * Output: 5
+ * Input: [4, 2, 7, 1, 9, 10]
+ * Output: 5.5
+ ************/
+
+function findMedian(arr) {
+    if (arr.length === 0) {
+        return null; // Handle empty array case
+    }
+    arr.sort((a, b) => a - b);
+    const mid = Math.floor(arr.length / 2);
+    if (arr.length % 2 === 0) {
+        return (arr[mid - 1] + arr[mid]) / 2;
+    } else {
+        return arr[mid];
+    }
+}
+
+// Example usage:
+console.log(findMedian([5, 2, 8, 1, 9]));
+console.log(findMedian([4, 2, 7, 1, 9, 10]));
+
+/***********
+ * Problem 18
+ * Write a function called ‘countCharacter’ that takes a string as parameters and returns an object with
+ * character count.
+ * For Example:
+ * Input: “Hello”
+ * Output: {H:1, e:1, l: 2, o:1}
+ ************/
+
+function countCharacter(str) {
+    const charCount = {};
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (charCount[char]) {
+            charCount[char]++;
+        } else {
+            charCount[char] = 1;
+        }
+    }
+    return charCount;
+}
+
+// Example usage:
+console.log(countCharacter('Hello'));
