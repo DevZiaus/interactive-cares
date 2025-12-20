@@ -13,7 +13,7 @@ function createMealCard(meal) {
         : 'No description available';
 
     return `
-        <div class="shadow hover:shadow-md transition-all duration-300 shadow-amber-400 rounded-xl mb-2.5 flex flex-col h-full">
+        <div class="shadow hover:shadow-md transition-all duration-300 shadow-primary hover:shadow-hover rounded-xl mb-2.5 flex flex-col h-full">
             <img
                 class="rounded-t-xl h-48 w-full object-cover"
                 src="${meal.strMealThumb}"
@@ -26,7 +26,7 @@ function createMealCard(meal) {
                 </p>
                 <button
                     data-id="${meal.idMeal}"
-                    class="recipe-btn self-end py-1.5 px-2 text-xs bg-amber-400 text-white rounded hover:bg-yellow-500 transition-all duration-300 cursor-pointer"
+                    class="recipe-btn self-end py-1.5 px-2 text-xs bg-primary text-white rounded hover:bg-hover transition-all duration-300 cursor-pointer"
                 >
                     View Details
                 </button>
