@@ -19,4 +19,11 @@
         background-position: center center;
         background-size: cover;
     }
+
+    .gradient-conic {
+        background: conic-gradient(
+            var(--color-primary) var(--scroll),
+            var(--color-white) 0
+        );
+    }
 }

@@ -148,3 +148,95 @@ function setFooterCurrentYear() {
 
 // Set footer dynamic Year
 setFooterCurrentYear();
+
+// Back to top
+/************************
+ * Back to Top Function
+ ***********************/
+function enableBackToTop() {
+    // 1. Select the elements using the IDs from the Tailwind HTML
+    const backToTopBtn = document.getElementById('progress-btn');
+    const percentText = document.getElementById('percent-text');
+
+    // Safety check
+    if (!backToTopBtn) return;
+
+    function updateScrollProgress() {
+        // 2. Calculate Scroll Data
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+
+        // Prevent division by zero
+        if (docHeight === 0) return;
+
+        let scrollPercent = (scrollTop / docHeight) * 100;
+
+        // 3. Clamp values
+        if (scrollPercent > 100) scrollPercent = 100;
+        if (scrollPercent < 0) scrollPercent = 0;
+
+        // 4. Update CSS Variable (This still works with the inline style I gave you)
+        backToTopBtn.style.setProperty('--scroll', `${scrollPercent}%`);
+
+        // 5. Update Text
+        if (percentText) {
+            percentText.textContent = Math.round(scrollPercent) + '%';
+        }
+
+        // 6. Toggle Visibility using Tailwind Classes
+        if (scrollTop > 100) {
+            // SHOW THE BUTTON
+            // Remove the "hidden" state classes
+            backToTopBtn.classList.remove(
+                'opacity-0',
+                'invisible',
+                'translate-y-8'
+            );
+
+            // Add the "visible" state classes (and animation)
+            // Note: 'animate-bounce-custom' requires the config I sent previously.
+            // If you didn't add that config, use standard 'animate-bounce' or remove it.
+            backToTopBtn.classList.add(
+                'opacity-100',
+                'visible',
+                'translate-y-0',
+                'animate-bounce-custom'
+            );
+        } else {
+            // HIDE THE BUTTON
+            // Remove the "visible" state classes
+            backToTopBtn.classList.remove(
+                'opacity-100',
+                'visible',
+                'translate-y-0',
+                'animate-bounce-custom'
+            );
+
+            // Add the "hidden" state classes
+            backToTopBtn.classList.add(
+                'opacity-0',
+                'invisible',
+                'translate-y-8'
+            );
+        }
+    }
+
+    // Scroll to Top on Click
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    });
+
+    // Add the Event Listener
+    window.addEventListener('scroll', updateScrollProgress);
+
+    // Run once on load to set initial state
+    updateScrollProgress();
+}
+
+// Invoke Back to top
+document.addEventListener('DOMContentLoaded', enableBackToTop);
