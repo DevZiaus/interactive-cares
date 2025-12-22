@@ -29,11 +29,13 @@
         <header class="container mx-auto">
             <nav class="py-4">
                 <div class="flex items-center justify-center">
-                    <img
-                        class="max-w-32"
-                        src="./assets/images/logo.png"
-                        alt="Logo"
-                    />
+                    <a href="/">
+                        <img
+                            class="max-w-32"
+                            src="./assets/images/logo.png"
+                            alt="Logo"
+                        />
+                    </a>
                 </div>
             </nav>
         </header>
@@ -59,12 +61,15 @@
 
         <!-- Search -->
         <section class="container mx-auto">
-            <form class="group pt-2.5 pb-5 flex items-center justify-center">
+            <form
+                id="search-form"
+                class="group pt-2.5 pb-5 flex items-center justify-center"
+            >
                 <input
                     class="w-1/2 h-10 p-2 border-2 border-primary group-hover:border-hover transition duration-300 rounded outline-none"
                     type="text"
                     name="search"
-                    id=""
+                    id="search-query"
                 />
                 <button
                     type="submit"
@@ -113,7 +118,7 @@
             class="mt-5 p-4 bg-gray-800 text-white container mx-auto flex flex-col sm:flex-row justify-between items-center"
         >
             <p>
-                Copyright &copy; <span class="year">2025</span> - All rights
+                Copyright &copy; <span class="year"></span> - All rights
                 reserved
             </p>
             <div class="flex gap-2.5">

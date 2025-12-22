@@ -1,11 +1,13 @@
+// Selecting the necessary DOM elements
 const modal = document.getElementById('recipe-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalImg = document.getElementById('modal-img');
 const modalDesc = document.getElementById('modal-instructions');
-
-let allMeals = [];
-
+const searchForm = document.getElementById('search-form');
 const recipeContainer = document.getElementById('recipes');
+
+// Intial All Meals
+let allMeals = [];
 
 function createMealCard(meal) {
     const description = meal.strInstructions
@@ -47,7 +49,7 @@ async function fetchAndRenderMeal(query = '') {
 
         if (allMeals.length < 1) {
             recipeContainer.innerHTML =
-                '<p class="col-span-full text-center text-red-500">No meals found.</p>';
+                '<p class="text-5xl col-span-full text-center text-red-500">No meals found.</p>';
             return;
         }
 
@@ -58,6 +60,12 @@ async function fetchAndRenderMeal(query = '') {
         recipeContainer.innerHTML =
             '<p class="col-span-full text-center text-red-500">Failed to load recipes.</p>';
     }
+}
+
+// Search Meal
+function SearchMeal() {
+    const query = document.getElementById('search-query').value;
+    fetchAndRenderMeal(query);
 }
 
 // Add Event Listener to the PARENT container
@@ -84,9 +92,7 @@ function handleShowDetails(id) {
         modalDesc.innerText = meal.strInstructions;
 
         // stops from scrolling in the background
-        // document.body.classList.add('overflow-hidden', 'h-screen');
-        document.body.style.overflow = 'hidden';
-        document.body.style.height = '100vh';
+        document.body.classList.add('h-screen', 'overflow-hidden');
 
         // Show Modal
         modal.classList.remove('hidden');
@@ -104,9 +110,7 @@ function handleShowDetails(id) {
 
 // Function to Close Modal
 function closeModal() {
-    // document.body.classList.remove('overflow-hidden', 'h-screen');
-    document.body.style.overflow = '';
-    document.body.style.height = '';
+    document.body.classList.remove('h-screen', 'overflow-hidden');
 
     // 1. Fade Out
     modal.classList.remove('opacity-100');
@@ -126,4 +130,21 @@ window.onclick = function (event) {
     }
 };
 
+// Initaial load Meal
 fetchAndRenderMeal();
+
+// Search Meal
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    SearchMeal();
+});
+
+// Footer Dynamic Year
+function setFooterCurrentYear() {
+    const yearSpan = document.querySelector('.year');
+    const currentYear = new Date().getFullYear();
+    yearSpan.innerText = currentYear;
+}
+
+// Set footer dynamic Year
+setFooterCurrentYear();
