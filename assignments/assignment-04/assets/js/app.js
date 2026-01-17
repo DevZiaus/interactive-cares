@@ -21,9 +21,9 @@ function createMealCard(meal) {
                 src="${meal.strMealThumb}"
                 alt="${meal.strMeal}"
             />
-            <div class="mt-2.5 p-2.5 flex flex-col items-start gap-2 flex-grow">
+            <div class="mt-2.5 p-2.5 flex flex-col items-start gap-2 grow">
                 <h3 class="text-base font-bold">${meal.strMeal}</h3>
-                <p class="text-xs font-light flex-grow">
+                <p class="text-xs font-light grow">
                     ${description}
                 </p>
                 <button
