@@ -3,7 +3,6 @@ import { ContactContext } from '../contexts/ContactContext';
 
 const Pagination = () => {
     const {
-        contactList,
         currentPage,
         setCurrentPage,
         contactsPerPage,

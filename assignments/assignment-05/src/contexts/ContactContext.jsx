@@ -4,14 +4,14 @@ export const ContactContext = createContext();
 
 const ContactProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [apiError, setApiError] = useState(null);
     const [contactList, setContactList] = useState([]);
     const [showDetailsModal, setShowDetailsModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedContact, setSelectedContact] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [showError, setShowError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    const [validationError, setValidationError] = useState('');
+    const [showValidationModal, setShowValidationModal] = useState(false);
     const [filterType, setFilterType] = useState('default');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +27,7 @@ const ContactProvider = ({ children }) => {
 
     const fetchContacts = async () => {
         setLoading(true);
-        setError(null);
+        setApiError(null);
         try {
             const response = await fetch(apiUrl);
 
@@ -40,7 +40,7 @@ const ContactProvider = ({ children }) => {
             const data = await response.json();
             setContactList([...data]);
         } catch (error) {
-            setError('Failed to fetch contacts.');
+            setApiError('Failed to fetch contacts.');
             setContactList([]); // Reset to empty array so .map() doesn't crash
             console.error('Error fetching contacts:', error);
         } finally {
@@ -50,19 +50,19 @@ const ContactProvider = ({ children }) => {
 
     const validateForm = () => {
         if (!formData.fName.trim()) {
-            setErrorMessage('First Name is required!');
+            setValidationError('First Name is required!');
             return false;
         }
         if (!formData.email.trim()) {
-            setErrorMessage('A valid Email address is required!');
+            setValidationError('A valid Email address is required!');
             return false;
         }
         if (!formData.phone.trim()) {
-            setErrorMessage('Phone number cannot be empty!');
+            setValidationError('Phone number cannot be empty!');
             return false;
         }
         if (!formData.address.trim()) {
-            setErrorMessage('Please provide a residential address.');
+            setValidationError('Please provide a residential address.');
             return false;
         }
         return true; // Everything is valid
@@ -77,6 +77,43 @@ const ContactProvider = ({ children }) => {
                 c.phone === formData.phone
             );
         });
+    };
+
+    const handleSubmitContact = async (navigate) => {
+        // 1. Run validation
+        if (!validateForm()) {
+            setShowValidationModal(true);
+            return;
+        }
+
+        // 2. Check duplicates
+        if (getDuplicate(formData)) {
+            setValidationError('This contact details already exist.');
+            setShowValidationModal(true);
+            return;
+        }
+
+        // 3. Submit
+        setIsSubmitting(true);
+        const success = await saveContact(formData);
+
+        if (success) {
+            // Reset local form state
+            setFormData({
+                fName: '',
+                lName: '',
+                email: '',
+                phone: '',
+                address: '',
+            });
+            setIsSubmitting(false);
+            // Redirect
+            navigate('/');
+        } else {
+            setValidationError('Failed to save contact.');
+            setShowValidationModal(true);
+            setIsSubmitting(false);
+        }
     };
 
     const saveContact = async (formData) => {
@@ -107,23 +144,34 @@ const ContactProvider = ({ children }) => {
     };
 
     const deleteContact = async (id) => {
-        setLoading(true); // Centralized loading start
-        setError(null);
+        setLoading(true);
+        setApiError(null);
         try {
             const response = await fetch(`${apiUrl}/${id}`, {
                 method: 'DELETE',
             });
 
-            if (!response.ok)
+            if (response.ok) {
+                setContactList((prev) => prev.filter((c) => c.id !== id));
+                return true;
+            } else {
                 throw new Error('Failed to delete contact from server');
-
-            setContactList((prev) => prev.filter((c) => c.id !== id));
-            return true;
+                return false;
+            }
         } catch (error) {
             setError(error.message);
             return false;
         } finally {
             setLoading(false);
+            setShowDeleteModal(false);
+            setShowDetailsModal(false);
+            setSelectedContact(null);
+        }
+    };
+
+    const confirmDelete = () => {
+        if (selectedContact) {
+            deleteContact(selectedContact.id);
         }
     };
 
@@ -184,14 +232,15 @@ const ContactProvider = ({ children }) => {
             value={{
                 loading,
                 setLoading,
-                error,
-                setError,
+                apiError,
+                setApiError,
                 isSubmitting,
                 setIsSubmitting,
-                showError,
-                setShowError,
-                errorMessage,
-                setErrorMessage,
+                showValidationModal,
+                setShowValidationModal,
+                validationError,
+                setValidationError,
+                handleSubmitContact,
                 formData,
                 setFormData,
                 contactList,
@@ -208,6 +257,7 @@ const ContactProvider = ({ children }) => {
                 selectedContact,
                 setSelectedContact,
                 deleteContact,
+                confirmDelete,
                 fetchContacts,
                 validateForm,
                 saveContact,

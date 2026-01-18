@@ -4,18 +4,14 @@ import SignleContact from './SingleContact'; // Import the new component
 import ShowDetailsModal from './ShowDetailsModal';
 import DeleteModal from './DeleteModal';
 import Pagination from './Pagination';
+import TableSkeleton from './TableSkeleton';
 
 const ContactTable = () => {
     const {
         loading,
-        error,
-        contactList,
+        apiError,
         showDetailsModal,
-        setShowDetailsModal,
         showDeleteModal,
-        setShowDeleteModal,
-        selectedContact,
-        deleteContact,
         fetchContacts,
         getDisplayContacts,
     } = useContext(ContactContext);
@@ -25,12 +21,6 @@ const ContactTable = () => {
     useEffect(() => {
         fetchContacts();
     }, []);
-
-    const handleDelete = async () => {
-        if (!selectedContact) return;
-        const success = await deleteContact(selectedContact.id);
-        if (success) setShowDeleteModal(false);
-    };
 
     return (
         <div className='card-body'>
@@ -46,26 +36,20 @@ const ContactTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {error && (
+                    {apiError && (
                         <tr className='alert alert-danger'>
                             <td
                                 colSpan='6'
                                 className='fw-bold fs-3 text-center'
                             >
-                                {error}
+                                {apiError}
                             </td>
                         </tr>
                     )}
 
-                    {loading && (
-                        <tr>
-                            <td colSpan='6' className='text-center'>
-                                <div className='spinner-border'></div>
-                            </td>
-                        </tr>
-                    )}
+                    {loading && <TableSkeleton />}
 
-                    {!error &&
+                    {!apiError &&
                         !loading &&
                         contacts.map((contact, index) => (
                             <SignleContact
@@ -75,7 +59,7 @@ const ContactTable = () => {
                             />
                         ))}
 
-                    {!error && !loading && contacts.length === 0 && (
+                    {!apiError && !loading && contacts.length === 0 && (
                         <tr>
                             <td
                                 colSpan='6'
@@ -90,20 +74,8 @@ const ContactTable = () => {
 
             <Pagination />
 
-            {showDetailsModal && (
-                <ShowDetailsModal
-                    contact={selectedContact}
-                    onClose={() => setShowDetailsModal(false)}
-                />
-            )}
-
-            {showDeleteModal && (
-                <DeleteModal
-                    itemName={`${selectedContact.fName} ${selectedContact.lName}`}
-                    onClose={() => setShowDeleteModal(false)}
-                    onConfirm={handleDelete}
-                />
-            )}
+            {showDetailsModal && <ShowDetailsModal />}
+            {showDeleteModal && <DeleteModal />}
         </div>
     );
 };

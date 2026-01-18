@@ -1,22 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router';
 
 import { ContactContext } from '../contexts/ContactContext';
 import DeleteModal from './DeleteModal';
 
-const ShowDetailsModal = ({ onClose, contact }) => {
+const ShowDetailsModal = () => {
+    const {
+        showDeleteModal,
+        setShowDeleteModal,
+        selectedContact: contact,
+        setShowDetailsModal,
+    } = useContext(ContactContext);
+
     if (!contact) return null;
 
-    const { deleteContact } = useContext(ContactContext);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-    const handleDeleteFromModal = async () => {
-        const success = await deleteContact(contact.id);
-        if (success) {
-            setShowDeleteModal(false);
-            onClose();
-        }
-    };
+    const onClose = () => setShowDetailsModal(false);
 
     return (
         <>
@@ -166,13 +164,8 @@ const ShowDetailsModal = ({ onClose, contact }) => {
                     </div>
                 </div>
             </div>
-            {/* Conditionally render the Delete Modal */}
-            {showDeleteModal && (
-                <DeleteModal
-                    onClose={() => setShowDeleteModal(false)}
-                    onConfirm={handleDeleteFromModal}
-                />
-            )}
+
+            {showDeleteModal && <DeleteModal />}
         </>
     );
 };

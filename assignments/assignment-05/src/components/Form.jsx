@@ -7,15 +7,9 @@ import ErrorModal from './ErrorModal';
 const Form = ({ formData: initialData }) => {
     const navigate = useNavigate();
     const {
-        saveContact,
-        getDuplicate,
-        validateForm,
         isSubmitting,
-        setIsSubmitting,
-        showError,
-        setShowError,
-        errorMessage,
-        setErrorMessage,
+        showValidationModal,
+        handleSubmitContact,
         formData,
         setFormData,
     } = useContext(ContactContext);
@@ -35,54 +29,16 @@ const Form = ({ formData: initialData }) => {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-
-        // 1. Run basic field validation
-        if (!validateForm()) {
-            setShowError(true);
-            return;
-        }
-
-        // 2. Check for duplicates (logic moved to Context)
-        const duplicate = getDuplicate(formData);
-        if (duplicate) {
-            setErrorMessage('This contact details already exist.');
-            setShowError(true);
-            return;
-        }
-
-        // 3. Submit data
-        setIsSubmitting(true);
-        const success = await saveContact(formData);
-
-        if (success) {
-            // 1. Clear the form data
-            setFormData({
-                fName: '',
-                lName: '',
-                email: '',
-                phone: '',
-                address: '',
-            });
-
-            // 2. Stop the loading state
-            setIsSubmitting(false);
-
-            // 3. Redirect to home
-            navigate('/');
-        } else {
-            setErrorMessage('Failed to save contact.');
-            setShowError(true);
-            setIsSubmitting(false);
-        }
+        handleSubmitContact(navigate);
     };
 
     return (
         <div className='card-body'>
             <div className='row'>
                 <div className='col-md-12'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={onSubmit}>
                         <div className='form-group row'>
                             <label
                                 htmlFor='first_name'
@@ -183,18 +139,13 @@ const Form = ({ formData: initialData }) => {
                                 <button
                                     type='submit'
                                     className='btn btn-primary'
-                                    disabled={isSubmitting} // Disable button here
+                                    disabled={isSubmitting}
                                 >
-                                    {isSubmitting ? (
-                                        <>
-                                            <span className='spinner-border spinner-border-sm me-2'></span>
-                                            Saving...
-                                        </>
-                                    ) : formData?.id ? (
-                                        'Update'
-                                    ) : (
-                                        'Add'
-                                    )}
+                                    {isSubmitting
+                                        ? 'Saving...'
+                                        : formData?.id
+                                          ? 'Update'
+                                          : 'Add'}
                                 </button>
                                 <Link
                                     to='/'
@@ -205,12 +156,8 @@ const Form = ({ formData: initialData }) => {
                             </div>
                         </div>
                     </form>
-                    {showError && (
-                        <ErrorModal
-                            message={errorMessage}
-                            onClose={() => setShowError(false)}
-                        />
-                    )}
+
+                    {showValidationModal && <ErrorModal />}
                 </div>
             </div>
         </div>

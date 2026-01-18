@@ -12,5 +12,6 @@ createRoot(document.getElementById('root')).render(
         <ContactProvider>
             <RouterProvider router={contactRouter} />
         </ContactProvider>
+        {/* <App /> */}
     </StrictMode>,
 );
