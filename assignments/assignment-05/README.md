@@ -4,4 +4,4 @@
 
 ### Email: mzsbulbul@gmail.com
 
-[ Live url](https://devziaus-ic-assignment-05.netlify.appton.js)
+[ Live url](https://devziaus-ic-assignment-05.netlify.app)
