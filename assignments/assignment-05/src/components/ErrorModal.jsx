@@ -1,15 +1,12 @@
-import { useContext } from 'react';
-import { ContactContext } from '../contexts/ContactContext';
+import { useContactContext } from '../contexts/ContactContext';
 
 const ErrorModal = () => {
-    const { validationError, setShowValidationModal } =
-        useContext(ContactContext);
-
+    const { validationError, closeModal } = useContactContext();
     return (
         <>
             <div
                 className='modal-backdrop fade show'
-                onClick={() => setShowValidationModal(false)}
+                onClick={() => closeModal()}
             ></div>
             <div className='modal show d-block' tabIndex='-1'>
                 <div className='modal-dialog modal-dialog-centered'>
@@ -19,7 +16,7 @@ const ErrorModal = () => {
                             <button
                                 type='button'
                                 className='btn-close btn-close-white'
-                                onClick={() => setShowValidationModal(false)}
+                                onClick={() => closeModal()}
                             ></button>
                         </div>
                         <div className='modal-body text-center py-4'>
@@ -29,7 +26,7 @@ const ErrorModal = () => {
                             <button
                                 type='button'
                                 className='btn btn-secondary'
-                                onClick={() => setShowValidationModal(false)}
+                                onClick={() => closeModal()}
                             >
                                 Close
                             </button>

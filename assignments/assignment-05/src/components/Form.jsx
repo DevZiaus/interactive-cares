@@ -1,32 +1,41 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 
-import { ContactContext } from '../contexts/ContactContext';
+import { useContactContext } from '../contexts/ContactContext';
 import ErrorModal from './ErrorModal';
 
 const Form = ({ formData: initialData }) => {
     const navigate = useNavigate();
     const {
         isSubmitting,
-        showValidationModal,
+        modalType,
         handleSubmitContact,
         formData,
         setFormData,
-    } = useContext(ContactContext);
+    } = useContactContext();
 
     useEffect(() => {
         if (initialData) {
             setFormData(initialData);
+        } else {
+            // Important: Reset form when adding a new contact
+            setFormData({
+                fName: '',
+                lName: '',
+                email: '',
+                phone: '',
+                address: '',
+            });
         }
-    }, [initialData]);
+    }, [initialData, setFormData]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        setFormData((prevData) => ({
-            ...prevData,
+        // Using function update is safer
+        setFormData({
+            ...formData,
             [name]: value,
-        }));
+        });
     };
 
     const onSubmit = (e) => {
@@ -52,7 +61,7 @@ const Form = ({ formData: initialData }) => {
                                     name='fName'
                                     id='first_name'
                                     className='form-control'
-                                    value={formData?.fName}
+                                    value={formData?.fName || ''}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -71,7 +80,7 @@ const Form = ({ formData: initialData }) => {
                                     name='lName'
                                     id='last_name'
                                     className='form-control'
-                                    value={formData?.lName}
+                                    value={formData?.lName || ''}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -90,7 +99,7 @@ const Form = ({ formData: initialData }) => {
                                     name='email'
                                     id='email'
                                     className='form-control'
-                                    value={formData?.email}
+                                    value={formData?.email || ''}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -109,7 +118,7 @@ const Form = ({ formData: initialData }) => {
                                     name='phone'
                                     id='phone'
                                     className='form-control'
-                                    value={formData?.phone}
+                                    value={formData?.phone || ''}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -128,7 +137,7 @@ const Form = ({ formData: initialData }) => {
                                     name='address'
                                     id='address'
                                     className='form-control'
-                                    value={formData?.address}
+                                    value={formData?.address || ''}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -157,7 +166,7 @@ const Form = ({ formData: initialData }) => {
                         </div>
                     </form>
 
-                    {showValidationModal && <ErrorModal />}
+                    {modalType === 'validation' && <ErrorModal />}
                 </div>
             </div>
         </div>

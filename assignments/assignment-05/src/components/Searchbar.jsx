@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Link } from 'react-router';
 
 import { FaPlusCircle } from 'react-icons/fa';
 
-import { ContactContext } from '../contexts/ContactContext';
+import { useContactContext } from '../contexts/ContactContext';
 
 const Searchbar = () => {
-    const { searchQuery, setSearchQuery } = useContext(ContactContext);
+    const { searchQuery, setSearchQuery } = useContactContext();
 
     return (
         <div className='card-header card-title'>

@@ -1,197 +1,165 @@
-import { createContext, useState, useEffect } from 'react';
+import {
+    createContext,
+    useContext,
+    useReducer,
+    useMemo,
+    useCallback,
+    useEffect,
+} from 'react';
+import contactReducer, { initialState } from '../reducers/contactReducer';
+import { usePagination } from '../hooks/usePagination';
 
 export const ContactContext = createContext();
 
 const ContactProvider = ({ children }) => {
-    const [loading, setLoading] = useState(false);
-    const [apiError, setApiError] = useState(null);
-    const [contactList, setContactList] = useState([]);
-    const [showDetailsModal, setShowDetailsModal] = useState(false);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [selectedContact, setSelectedContact] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [validationError, setValidationError] = useState('');
-    const [showValidationModal, setShowValidationModal] = useState(false);
-    const [filterType, setFilterType] = useState('default');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
-    const contactsPerPage = 10;
-    const [formData, setFormData] = useState({
-        fName: '',
-        lName: '',
-        email: '',
-        phone: '',
-        address: '',
-    });
-    const apiUrl = import.meta.env.VITE_API_URL;
+    const [state, dispatch] = useReducer(contactReducer, initialState);
 
-    const fetchContacts = async () => {
-        setLoading(true);
-        setApiError(null);
+    // Config
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const contactsPerPage = 10;
+
+    const setCurrentPage = useCallback((page) => {
+        dispatch({ type: 'SET_PAGE', payload: page });
+    }, []);
+
+    const setFormData = useCallback((data) => {
+        dispatch({ type: 'UPDATE_FORM', payload: data });
+    }, []);
+
+    // --- ACTIONS ---
+
+    // Fetch Contacts
+    const fetchContacts = useCallback(async () => {
+        dispatch({ type: 'SET_LOADING', payload: true });
         try {
             const response = await fetch(apiUrl);
-
-            if (!response.ok) {
-                throw new Error(
-                    `Server responded with status: ${response.status}`,
-                );
-            }
-
+            if (!response.ok) throw new Error(`Status: ${response.status}`);
             const data = await response.json();
-            setContactList([...data]);
+            dispatch({ type: 'FETCH_SUCCESS', payload: data });
         } catch (error) {
-            setApiError('Failed to fetch contacts.');
-            setContactList([]); // Reset to empty array so .map() doesn't crash
-            console.error('Error fetching contacts:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const validateForm = () => {
-        if (!formData.fName.trim()) {
-            setValidationError('First Name is required!');
-            return false;
-        }
-        if (!formData.email.trim()) {
-            setValidationError('A valid Email address is required!');
-            return false;
-        }
-        if (!formData.phone.trim()) {
-            setValidationError('Phone number cannot be empty!');
-            return false;
-        }
-        if (!formData.address.trim()) {
-            setValidationError('Please provide a residential address.');
-            return false;
-        }
-        return true; // Everything is valid
-    };
-
-    const getDuplicate = (formData) => {
-        return contactList.find((c) => {
-            if (formData.id && c.id === formData.id) return false;
-            return (
-                c.fName.toLowerCase() === formData.fName.toLowerCase() ||
-                c.email.toLowerCase() === formData.email.toLowerCase() ||
-                c.phone === formData.phone
-            );
-        });
-    };
-
-    const handleSubmitContact = async (navigate) => {
-        // 1. Run validation
-        if (!validateForm()) {
-            setShowValidationModal(true);
-            return;
-        }
-
-        // 2. Check duplicates
-        if (getDuplicate(formData)) {
-            setValidationError('This contact details already exist.');
-            setShowValidationModal(true);
-            return;
-        }
-
-        // 3. Submit
-        setIsSubmitting(true);
-        const success = await saveContact(formData);
-
-        if (success) {
-            // Reset local form state
-            setFormData({
-                fName: '',
-                lName: '',
-                email: '',
-                phone: '',
-                address: '',
+            dispatch({
+                type: 'API_ERROR',
+                payload: 'Failed to fetch contacts.',
             });
-            setIsSubmitting(false);
-            // Redirect
-            navigate('/');
-        } else {
-            setValidationError('Failed to save contact.');
-            setShowValidationModal(true);
-            setIsSubmitting(false);
+        }
+    }, [apiUrl]);
+
+    // Delete Contact
+    const deleteContact = async (id) => {
+        dispatch({ type: 'SET_LOADING', payload: true });
+        try {
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                const updatedList = state.contactList.filter(
+                    (c) => c.id !== id,
+                );
+                dispatch({ type: 'FETCH_SUCCESS', payload: updatedList });
+                dispatch({ type: 'CLOSE_MODAL' });
+            } else {
+                throw new Error('Failed to delete');
+            }
+        } catch (error) {
+            dispatch({ type: 'API_ERROR', payload: error.message });
         }
     };
 
+    // Save Contact (Add or Edit)
     const saveContact = async (formData) => {
+        dispatch({ type: 'START_SUBMIT' });
+
         const isEditing = !!formData.id;
         const url = isEditing ? `${apiUrl}/${formData.id}` : apiUrl;
         const method = isEditing ? 'PUT' : 'POST';
 
         const payload = {
             ...formData,
-            // Only set 'createdAt' if it's a new contact (POST)
-            // If editing, keep the existing one or add an 'updatedAt'
             updatedAt: new Date().toISOString(),
             ...(isEditing ? {} : { createdAt: new Date().toISOString() }),
         };
 
-        const response = await fetch(url, {
-            method: method,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-            await fetchContacts();
-            setShowDetailsModal(false);
-            return true;
-        }
-        return false;
-    };
-
-    const deleteContact = async (id) => {
-        setLoading(true);
-        setApiError(null);
         try {
-            const response = await fetch(`${apiUrl}/${id}`, {
-                method: 'DELETE',
+            const response = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
             });
 
             if (response.ok) {
-                setContactList((prev) => prev.filter((c) => c.id !== id));
+                await fetchContacts();
+                dispatch({ type: 'SUBMIT_SUCCESS' });
                 return true;
-            } else {
-                throw new Error('Failed to delete contact from server');
-                return false;
             }
+            throw new Error('Failed to save');
         } catch (error) {
-            setError(error.message);
+            dispatch({
+                type: 'SUBMIT_ERROR',
+                payload: 'Failed to save contact.',
+            });
             return false;
-        } finally {
-            setLoading(false);
-            setShowDeleteModal(false);
-            setShowDetailsModal(false);
-            setSelectedContact(null);
         }
     };
 
-    const confirmDelete = () => {
-        if (selectedContact) {
-            deleteContact(selectedContact.id);
-        }
+    // --- LOGIC HELPER ---
+
+    const validateForm = (data) => {
+        if (!data) return 'Form data is missing';
+
+        if (!data.fName?.trim()) return 'First Name is required!';
+        if (!data.email?.trim()) return 'Valid Email is required!';
+        if (!data.phone?.trim()) return 'Phone is required!';
+        if (!data.address?.trim()) return 'Address is required!';
+
+        // Check Duplicate
+        const duplicate = state.contactList.find(
+            (c) =>
+                (c.email.toLowerCase() === data.email.toLowerCase() ||
+                    c.phone === data.phone) &&
+                c.id !== data.id,
+        );
+        if (duplicate) return 'This contact already exists.';
+
+        return null;
     };
 
-    const getFilteredAndSortedContacts = () => {
-        let list = [...contactList];
+    const handleSubmitContact = async (navigate) => {
+        const error = validateForm(state.formData);
+        if (error) {
+            dispatch({
+                type: 'OPEN_MODAL',
+                payload: { type: 'validation' },
+            });
+            dispatch({
+                type: 'SUBMIT_ERROR',
+                payload: error,
+            });
+            return;
+        }
 
-        // 1. Apply Search Filter
-        if (searchQuery.trim()) {
-            const query = searchQuery.toLowerCase();
+        const success = await saveContact(state.formData);
+        if (success) navigate('/');
+    };
+
+    // --- MEMOIZED FILTERING (Performance Booster) ---
+
+    const filteredList = useMemo(() => {
+        let list = [...state.contactList];
+
+        // 1. Search
+        if (state.searchQuery.trim()) {
+            const q = state.searchQuery.toLowerCase();
             list = list.filter(
                 (c) =>
-                    c.fName?.toLowerCase().includes(query) ||
-                    c.lName?.toLowerCase().includes(query) ||
-                    c.email?.toLowerCase().includes(query) ||
-                    c.phone?.includes(query),
+                    c.fName?.toLowerCase().includes(q) ||
+                    c.lName?.toLowerCase().includes(q) ||
+                    c.email?.toLowerCase().includes(q) ||
+                    c.phone?.includes(q),
             );
         }
 
-        // 2. Apply Sorting (Your existing switch logic)
-        switch (filterType) {
+        // 2. Sort
+        switch (state.filterType) {
             case 'fName':
                 return list.sort((a, b) => a.fName.localeCompare(b.fName));
             case 'lName':
@@ -205,72 +173,85 @@ const ContactProvider = ({ children }) => {
                     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
                 );
         }
+        return list;
+    }, [state.contactList, state.searchQuery, state.filterType]);
+
+    // --- PAGINATION HOOK ---
+    const pagination = usePagination(
+        filteredList,
+        state.currentPage,
+        setCurrentPage,
+        contactsPerPage,
+    );
+
+    // --- HELPERS ---
+    const confirmDelete = () => {
+        if (state.selectedContact) deleteContact(state.selectedContact.id);
     };
 
-    const getDisplayContacts = () => {
-        // 1. Get the list after Searching and Sorting
-        const filteredSortedList = getFilteredAndSortedContacts();
-
-        // 2. Calculate the start and end index for the current page
-        const indexOfLastContact = currentPage * contactsPerPage;
-        const indexOfFirstContact = indexOfLastContact - contactsPerPage;
-
-        // 3. Slice the array to get only 10 items
-        return filteredSortedList.slice(
-            indexOfFirstContact,
-            indexOfLastContact,
-        );
+    // ✅ Modal controls
+    const openDetailsModal = (contact) => {
+        dispatch({
+            type: 'OPEN_MODAL',
+            payload: { type: 'details', contact },
+        });
     };
 
-    // Reset page to 1 whenever search or filter changes
+    const openDeleteModal = (contact) => {
+        dispatch({
+            type: 'OPEN_MODAL',
+            payload: { type: 'delete', contact },
+        });
+    };
+
+    const closeModal = useCallback(() => {
+        dispatch({ type: 'CLOSE_MODAL' });
+    }, []);
+
     useEffect(() => {
-        setCurrentPage(1);
-    }, [searchQuery, filterType]);
+        // We only reset if we are not already on page 1
+        if (state.currentPage !== 1) {
+            setCurrentPage(1);
+        }
+    }, [state.searchQuery, state.filterType, setCurrentPage]);
+
+    // --- PROVIDER VALUE ---
+    const values = {
+        ...state, // Exposes all state variables (loading, contactList, etc.)
+
+        // Actions (Function Wrappers)
+        setFilterType: (type) =>
+            dispatch({ type: 'SET_FILTER', payload: type }),
+        setSearchQuery: (query) =>
+            dispatch({ type: 'SET_SEARCH', payload: query }),
+        setSelectedContact: (contact) =>
+            dispatch({ type: 'OPEN_DETAILS', payload: contact }),
+
+        // Operations
+        fetchContacts,
+        deleteContact,
+        confirmDelete,
+        handleSubmitContact,
+        closeModal,
+        setCurrentPage,
+        contactsPerPage,
+        setFormData,
+        openDetailsModal,
+        openDeleteModal,
+
+        // Pagination
+        ...pagination,
+    };
 
     return (
-        <ContactContext.Provider
-            value={{
-                loading,
-                setLoading,
-                apiError,
-                setApiError,
-                isSubmitting,
-                setIsSubmitting,
-                showValidationModal,
-                setShowValidationModal,
-                validationError,
-                setValidationError,
-                handleSubmitContact,
-                formData,
-                setFormData,
-                contactList,
-                setContactList,
-                filterType,
-                setFilterType,
-                searchQuery,
-                setSearchQuery,
-                getFilteredAndSortedContacts,
-                showDetailsModal,
-                setShowDetailsModal,
-                showDeleteModal,
-                setShowDeleteModal,
-                selectedContact,
-                setSelectedContact,
-                deleteContact,
-                confirmDelete,
-                fetchContacts,
-                validateForm,
-                saveContact,
-                getDuplicate,
-                currentPage,
-                setCurrentPage,
-                contactsPerPage,
-                getDisplayContacts,
-            }}
-        >
+        <ContactContext.Provider value={values}>
             {children}
         </ContactContext.Provider>
     );
 };
 
 export default ContactProvider;
+
+export function useContactContext() {
+    return useContext(ContactContext);
+}

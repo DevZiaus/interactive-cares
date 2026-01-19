@@ -4,32 +4,19 @@ import { useContactContext } from '../contexts/ContactContext';
 
 const SingleContact = ({ contact, index }) => {
     const {
+        setSelectedContact,
+        setShowDetailsModal,
+        setShowDeleteModal,
         currentPage,
         contactsPerPage,
-        setSelectedContact,
-        openDetailsModal,
-        openDeleteModal,
     } = useContactContext();
 
-    // 1. Row Click Handler (Opens Details)
-    const handleViewClick = (e) => {
-        e.stopPropagation();
-        setSelectedContact(contact);
-        openDetailsModal(contact);
-    };
-
-    // 2. Delete Button Handler (Opens Delete Warning)
-    const handleDeleteClick = (e) => {
-        e.stopPropagation();
-        setSelectedContact(contact);
-        openDeleteModal(contact);
-    };
-
-    const globalIndex = (currentPage - 1) * contactsPerPage + index + 1;
+    // Global serial number calculation
+    const globalIndex = (currentPage - 1) * contactsPerPage + (index + 1);
 
     return (
         <tr>
-            <th scope='row'>{globalIndex}</th>
+            <td>{globalIndex}</td>
             <td>{contact.fName}</td>
             <td>{contact.lName}</td>
             <td>{contact.email}</td>
@@ -37,7 +24,10 @@ const SingleContact = ({ contact, index }) => {
             <td width='150' className='d-flex gap-2'>
                 <button
                     className='btn btn-sm btn-circle btn-outline-info'
-                    onClick={handleViewClick}
+                    onClick={() => {
+                        setSelectedContact(contact);
+                        setShowDetailsModal(true);
+                    }}
                     title='View'
                 >
                     <FaEye />
@@ -45,7 +35,6 @@ const SingleContact = ({ contact, index }) => {
                 <Link
                     to={`/contact/edit/${contact.id}`}
                     state={{ contactData: contact }}
-                    onClick={(e) => e.stopPropagation()}
                     className='btn btn-sm btn-circle btn-outline-secondary'
                     title='Edit'
                 >
@@ -53,7 +42,10 @@ const SingleContact = ({ contact, index }) => {
                 </Link>
                 <button
                     className='btn btn-sm btn-circle btn-outline-danger'
-                    onClick={handleDeleteClick}
+                    onClick={() => {
+                        setSelectedContact(contact);
+                        setShowDeleteModal(true);
+                    }}
                     title='Delete'
                 >
                     <FaTimes />

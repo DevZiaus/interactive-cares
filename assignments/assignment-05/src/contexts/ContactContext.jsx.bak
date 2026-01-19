@@ -1,0 +1,220 @@
+import { createContext, useState, useEffect, useContext } from 'react';
+import { useContactActions } from '../hooks/useContactActions';
+import { usePagination } from '../hooks/usePagination';
+
+export const ContactContext = createContext();
+
+const ContactProvider = ({ children }) => {
+    // 1. State declarations
+    const [loading, setLoading] = useState(false);
+    const [apiError, setApiError] = useState(null);
+    const [contactList, setContactList] = useState([]);
+    const [filterType, setFilterType] = useState('default');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [selectedContact, setSelectedContact] = useState(null);
+    const [formData, setFormData] = useState({
+        fName: '',
+        lName: '',
+        email: '',
+        phone: '',
+        address: '',
+    });
+
+    // Modals & Submission
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showValidationModal, setShowValidationModal] = useState(false);
+    const [validationError, setValidationError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // 2. API URL & Pagination
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const contactsPerPage = 10;
+
+    // 3. Fetch Contacts from API
+    const fetchContacts = async () => {
+        setLoading(true);
+        setApiError(null);
+        try {
+            const response = await fetch(apiUrl);
+
+            if (!response.ok) {
+                throw new Error(
+                    `Server responded with status: ${response.status}`,
+                );
+            }
+
+            const data = await response.json();
+            setContactList([...data]);
+        } catch (error) {
+            setApiError('Failed to fetch contacts.');
+            setContactList([]);
+            console.error('Error fetching contacts:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const { validateForm, getDuplicate, saveContact } = useContactActions(
+        apiUrl,
+        contactList,
+        fetchContacts,
+    );
+
+    const handleSubmitContact = async (navigate) => {
+        // 1. Run validation
+        if (!validateForm()) {
+            setShowValidationModal(true);
+            return;
+        }
+
+        // 2. Check duplicates
+        if (getDuplicate(formData)) {
+            setValidationError('This contact details already exist.');
+            setShowValidationModal(true);
+            return;
+        }
+
+        // 3. Submit
+        setIsSubmitting(true);
+        const success = await saveContact(formData);
+
+        if (success) {
+            // Reset local form state
+            setFormData({
+                fName: '',
+                lName: '',
+                email: '',
+                phone: '',
+                address: '',
+            });
+            setIsSubmitting(false);
+            // Redirect
+            navigate('/');
+        } else {
+            setValidationError('Failed to save contact.');
+            setShowValidationModal(true);
+            setIsSubmitting(false);
+        }
+    };
+
+    const deleteContact = async (id) => {
+        setLoading(true);
+        setApiError(null);
+        try {
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                setContactList((prev) => prev.filter((c) => c.id !== id));
+                return true;
+            } else {
+                throw new Error('Failed to delete contact from server');
+                return false;
+            }
+        } catch (error) {
+            setError(error.message);
+            return false;
+        } finally {
+            setLoading(false);
+            setShowDeleteModal(false);
+            setShowDetailsModal(false);
+            setSelectedContact(null);
+        }
+    };
+
+    const confirmDelete = () => {
+        if (selectedContact) {
+            deleteContact(selectedContact.id);
+        }
+    };
+
+    const getFilteredAndSortedContacts = () => {
+        let list = [...contactList];
+
+        // 1. Apply Search Filter
+        if (searchQuery.trim()) {
+            const query = searchQuery.toLowerCase();
+            list = list.filter(
+                (c) =>
+                    c.fName?.toLowerCase().includes(query) ||
+                    c.lName?.toLowerCase().includes(query) ||
+                    c.email?.toLowerCase().includes(query) ||
+                    c.phone?.includes(query),
+            );
+        }
+
+        // 2. Apply Sorting (Your existing switch logic)
+        switch (filterType) {
+            case 'fName':
+                return list.sort((a, b) => a.fName.localeCompare(b.fName));
+            case 'lName':
+                return list.sort((a, b) => a.lName.localeCompare(b.lName));
+            case 'oldest':
+                return list.sort(
+                    (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+                );
+            default:
+                return list.sort(
+                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+                );
+        }
+    };
+
+    const filteredList = getFilteredAndSortedContacts();
+
+    const pagination = usePagination(
+        filteredList,
+        currentPage,
+        setCurrentPage,
+        contactsPerPage,
+    );
+
+    // Reset page to 1 whenever search or filter changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchQuery, filterType]);
+
+    return (
+        <ContactContext.Provider
+            value={{
+                loading,
+                apiError,
+                isSubmitting,
+                showValidationModal,
+                setShowValidationModal,
+                validationError,
+                handleSubmitContact,
+                formData,
+                setFormData,
+                filterType,
+                setFilterType,
+                searchQuery,
+                setSearchQuery,
+                getFilteredAndSortedContacts,
+                showDetailsModal,
+                setShowDetailsModal,
+                showDeleteModal,
+                setShowDeleteModal,
+                selectedContact,
+                setSelectedContact,
+                confirmDelete,
+                fetchContacts,
+                currentPage,
+                setCurrentPage,
+                contactsPerPage,
+                ...pagination,
+            }}
+        >
+            {children}
+        </ContactContext.Provider>
+    );
+};
+
+export default ContactProvider;
+
+export function useContactContext() {
+    return useContext(ContactContext);
+}

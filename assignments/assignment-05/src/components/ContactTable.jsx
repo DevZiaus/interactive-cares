@@ -1,22 +1,16 @@
-import { useEffect, useContext } from 'react';
-import { ContactContext } from '../contexts/ContactContext';
-import SignleContact from './SingleContact'; // Import the new component
+import { useEffect } from 'react';
+import { useContactContext } from '../contexts/ContactContext';
+import SignleContact from './SingleContact';
 import ShowDetailsModal from './ShowDetailsModal';
 import DeleteModal from './DeleteModal';
 import Pagination from './Pagination';
 import TableSkeleton from './TableSkeleton';
 
 const ContactTable = () => {
-    const {
-        loading,
-        apiError,
-        showDetailsModal,
-        showDeleteModal,
-        fetchContacts,
-        getDisplayContacts,
-    } = useContext(ContactContext);
+    const { loading, apiError, fetchContacts, displayContacts, modalType } =
+        useContactContext();
 
-    const contacts = getDisplayContacts();
+    const contacts = displayContacts;
 
     useEffect(() => {
         fetchContacts();
@@ -74,8 +68,8 @@ const ContactTable = () => {
 
             <Pagination />
 
-            {showDetailsModal && <ShowDetailsModal />}
-            {showDeleteModal && <DeleteModal />}
+            {modalType === 'details' && <ShowDetailsModal />}
+            {modalType === 'delete' && <DeleteModal />}
         </div>
     );
 };

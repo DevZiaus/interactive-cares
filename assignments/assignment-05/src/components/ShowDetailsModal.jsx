@@ -1,25 +1,25 @@
-import { useContext } from 'react';
 import { Link } from 'react-router';
 
-import { ContactContext } from '../contexts/ContactContext';
+import { useContactContext } from '../contexts/ContactContext';
 import DeleteModal from './DeleteModal';
 
 const ShowDetailsModal = () => {
     const {
-        showDeleteModal,
-        setShowDeleteModal,
+        modalType,
+        openDeleteModal,
         selectedContact: contact,
-        setShowDetailsModal,
-    } = useContext(ContactContext);
+        closeModal,
+    } = useContactContext();
 
     if (!contact) return null;
-
-    const onClose = () => setShowDetailsModal(false);
 
     return (
         <>
             {/* Backdrop shadow */}
-            <div className='modal-backdrop fade show' onClick={onClose}></div>
+            <div
+                className='modal-backdrop fade show'
+                onClick={closeModal}
+            ></div>
 
             {/* Modal Dialog */}
             <div className='modal show d-block' tabIndex='-1'>
@@ -33,7 +33,7 @@ const ShowDetailsModal = () => {
                             <button
                                 type='button'
                                 className='btn-close'
-                                onClick={onClose}
+                                onClick={closeModal}
                             ></button>
                         </div>
                         <div className='modal-body'>
@@ -141,9 +141,7 @@ const ShowDetailsModal = () => {
                                             </Link>
                                             <button
                                                 className='btn btn-danger ms-2'
-                                                onClick={() =>
-                                                    setShowDeleteModal(true)
-                                                }
+                                                onClick={openDeleteModal}
                                                 title='Delete'
                                             >
                                                 Delete
@@ -156,7 +154,7 @@ const ShowDetailsModal = () => {
                         <div className='modal-footer'>
                             <button
                                 className='btn btn-outline-secondary'
-                                onClick={onClose}
+                                onClick={closeModal}
                             >
                                 Close
                             </button>
@@ -165,7 +163,7 @@ const ShowDetailsModal = () => {
                 </div>
             </div>
 
-            {showDeleteModal && <DeleteModal />}
+            {modalType === 'delete' && <DeleteModal />}
         </>
     );
 };

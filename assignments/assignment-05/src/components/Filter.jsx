@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import { FaFilter } from 'react-icons/fa';
-import { ContactContext } from '../contexts/ContactContext';
+import { useContactContext } from '../contexts/ContactContext';
 
 const Filter = () => {
-    const { filterType, setFilterType } = useContext(ContactContext);
+    const { filterType, setFilterType } = useContactContext();
 
     return (
         <div className='d-flex align-items-center justify-content-between p-3'>
