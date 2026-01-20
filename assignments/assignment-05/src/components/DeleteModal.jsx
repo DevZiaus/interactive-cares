@@ -3,8 +3,6 @@ import { useContactContext } from '../contexts/ContactContext';
 const DeleteModal = () => {
     const { selectedContact, closeModal, confirmDelete } = useContactContext();
 
-    if (!selectedContact) return null;
-
     return (
         <>
             <div

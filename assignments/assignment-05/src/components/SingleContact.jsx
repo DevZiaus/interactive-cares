@@ -3,25 +3,16 @@ import { FaEye, FaEdit, FaTimes } from 'react-icons/fa';
 import { useContactContext } from '../contexts/ContactContext';
 
 const SingleContact = ({ contact, index }) => {
-    const {
-        currentPage,
-        contactsPerPage,
-        setSelectedContact,
-        openDetailsModal,
-        openDeleteModal,
-    } = useContactContext();
+    const { currentPage, contactsPerPage, openDetailsModal, openDeleteModal } =
+        useContactContext();
 
-    // 1. Row Click Handler (Opens Details)
     const handleViewClick = (e) => {
         e.stopPropagation();
-        setSelectedContact(contact);
         openDetailsModal(contact);
     };
 
-    // 2. Delete Button Handler (Opens Delete Warning)
     const handleDeleteClick = (e) => {
         e.stopPropagation();
-        setSelectedContact(contact);
         openDeleteModal(contact);
     };
 

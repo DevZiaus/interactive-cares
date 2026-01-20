@@ -141,7 +141,9 @@ const ShowDetailsModal = () => {
                                             </Link>
                                             <button
                                                 className='btn btn-danger ms-2'
-                                                onClick={openDeleteModal}
+                                                onClick={() =>
+                                                    openDeleteModal(contact)
+                                                }
                                                 title='Delete'
                                             >
                                                 Delete

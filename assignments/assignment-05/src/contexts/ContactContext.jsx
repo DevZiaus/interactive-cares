@@ -18,15 +18,49 @@ const ContactProvider = ({ children }) => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const contactsPerPage = 10;
 
-    const setCurrentPage = useCallback((page) => {
-        dispatch({ type: 'SET_PAGE', payload: page });
-    }, []);
+    // --- Helpers ---
+    // Form Validation
+    const validateForm = (data) => {
+        if (!data) return 'Form data is missing';
 
-    const setFormData = useCallback((data) => {
-        dispatch({ type: 'UPDATE_FORM', payload: data });
-    }, []);
+        if (!data.fName?.trim()) return 'First Name is required!';
+        if (!data.email?.trim()) return 'Valid Email is required!';
+        if (!data.phone?.trim()) return 'Phone is required!';
+        if (!data.address?.trim()) return 'Address is required!';
 
-    // --- ACTIONS ---
+        // Check Duplicate
+        const duplicate = state.contactList.find(
+            (c) =>
+                (c.email.toLowerCase() === data.email.toLowerCase() ||
+                    c.phone === data.phone) &&
+                c.id !== data.id,
+        );
+        if (duplicate) return 'This contact already exists.';
+
+        return null;
+    };
+
+    // Confirm Delete Contact
+    // const confirmDelete = () => {
+    //     if (state.selectedContact) deleteContact(state.selectedContact.id);
+    // };
+    const confirmDelete = () => {
+        if (!state.selectedContact?.id) {
+            console.error('No contact selected for deletion');
+            return;
+        }
+
+        deleteContact(state.selectedContact.id);
+    };
+
+    // --- Actions ---
+
+    const setFilterType = (type) =>
+        dispatch({ type: 'SET_FILTER', payload: type });
+    const setSearchQuery = (query) =>
+        dispatch({ type: 'SET_SEARCH', payload: query });
+    // const setSelectedContact = (contact) =>
+    //     dispatch({ type: 'OPEN_DETAILS', payload: contact });
 
     // Fetch Contacts
     const fetchContacts = useCallback(async () => {
@@ -65,6 +99,30 @@ const ContactProvider = ({ children }) => {
         }
     };
 
+    // Handle Submit Contact (Add or Edit)
+    const handleSubmitContact = async (navigate) => {
+        const error = validateForm(state.formData);
+        if (error) {
+            dispatch({
+                type: 'OPEN_MODAL',
+                payload: { type: 'validation' },
+            });
+            dispatch({
+                type: 'SUBMIT_ERROR',
+                payload: error,
+            });
+            return;
+        }
+
+        const success = await saveContact(state.formData);
+        if (success) navigate('/');
+    };
+
+    // Set Form Data
+    const setFormData = useCallback((data) => {
+        dispatch({ type: 'UPDATE_FORM', payload: data });
+    }, []);
+
     // Save Contact (Add or Edit)
     const saveContact = async (formData) => {
         dispatch({ type: 'START_SUBMIT' });
@@ -101,47 +159,12 @@ const ContactProvider = ({ children }) => {
         }
     };
 
-    // --- LOGIC HELPER ---
+    // Set Current Page
+    const setCurrentPage = useCallback((page) => {
+        dispatch({ type: 'SET_PAGE', payload: page });
+    }, []);
 
-    const validateForm = (data) => {
-        if (!data) return 'Form data is missing';
-
-        if (!data.fName?.trim()) return 'First Name is required!';
-        if (!data.email?.trim()) return 'Valid Email is required!';
-        if (!data.phone?.trim()) return 'Phone is required!';
-        if (!data.address?.trim()) return 'Address is required!';
-
-        // Check Duplicate
-        const duplicate = state.contactList.find(
-            (c) =>
-                (c.email.toLowerCase() === data.email.toLowerCase() ||
-                    c.phone === data.phone) &&
-                c.id !== data.id,
-        );
-        if (duplicate) return 'This contact already exists.';
-
-        return null;
-    };
-
-    const handleSubmitContact = async (navigate) => {
-        const error = validateForm(state.formData);
-        if (error) {
-            dispatch({
-                type: 'OPEN_MODAL',
-                payload: { type: 'validation' },
-            });
-            dispatch({
-                type: 'SUBMIT_ERROR',
-                payload: error,
-            });
-            return;
-        }
-
-        const success = await saveContact(state.formData);
-        if (success) navigate('/');
-    };
-
-    // --- MEMOIZED FILTERING (Performance Booster) ---
+    // --- Filter ---
 
     const filteredList = useMemo(() => {
         let list = [...state.contactList];
@@ -176,7 +199,14 @@ const ContactProvider = ({ children }) => {
         return list;
     }, [state.contactList, state.searchQuery, state.filterType]);
 
-    // --- PAGINATION HOOK ---
+    // Reset to page 1 on filter/search change
+    useEffect(() => {
+        if (state.currentPage !== 1) {
+            setCurrentPage(1);
+        }
+    }, [state.searchQuery, state.filterType, setCurrentPage]);
+
+    // --- Pagination ---
     const pagination = usePagination(
         filteredList,
         state.currentPage,
@@ -184,12 +214,7 @@ const ContactProvider = ({ children }) => {
         contactsPerPage,
     );
 
-    // --- HELPERS ---
-    const confirmDelete = () => {
-        if (state.selectedContact) deleteContact(state.selectedContact.id);
-    };
-
-    // ✅ Modal controls
+    // Modal controls
     const openDetailsModal = (contact) => {
         dispatch({
             type: 'OPEN_MODAL',
@@ -208,25 +233,14 @@ const ContactProvider = ({ children }) => {
         dispatch({ type: 'CLOSE_MODAL' });
     }, []);
 
-    useEffect(() => {
-        // We only reset if we are not already on page 1
-        if (state.currentPage !== 1) {
-            setCurrentPage(1);
-        }
-    }, [state.searchQuery, state.filterType, setCurrentPage]);
-
-    // --- PROVIDER VALUE ---
+    // --- Provider Value ---
     const values = {
-        ...state, // Exposes all state variables (loading, contactList, etc.)
-
-        // Actions (Function Wrappers)
-        setFilterType: (type) =>
-            dispatch({ type: 'SET_FILTER', payload: type }),
-        setSearchQuery: (query) =>
-            dispatch({ type: 'SET_SEARCH', payload: query }),
-        setSelectedContact: (contact) =>
-            dispatch({ type: 'OPEN_DETAILS', payload: contact }),
-
+        // States
+        ...state,
+        // Actions
+        setFilterType,
+        setSearchQuery,
+        // setSelectedContact,
         // Operations
         fetchContacts,
         deleteContact,
@@ -238,7 +252,6 @@ const ContactProvider = ({ children }) => {
         setFormData,
         openDetailsModal,
         openDeleteModal,
-
         // Pagination
         ...pagination,
     };
