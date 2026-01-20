@@ -41,9 +41,6 @@ const ContactProvider = ({ children }) => {
     };
 
     // Confirm Delete Contact
-    // const confirmDelete = () => {
-    //     if (state.selectedContact) deleteContact(state.selectedContact.id);
-    // };
     const confirmDelete = () => {
         if (!state.selectedContact?.id) {
             console.error('No contact selected for deletion');
@@ -59,8 +56,6 @@ const ContactProvider = ({ children }) => {
         dispatch({ type: 'SET_FILTER', payload: type });
     const setSearchQuery = (query) =>
         dispatch({ type: 'SET_SEARCH', payload: query });
-    // const setSelectedContact = (contact) =>
-    //     dispatch({ type: 'OPEN_DETAILS', payload: contact });
 
     // Fetch Contacts
     const fetchContacts = useCallback(async () => {
@@ -240,7 +235,6 @@ const ContactProvider = ({ children }) => {
         // Actions
         setFilterType,
         setSearchQuery,
-        // setSelectedContact,
         // Operations
         fetchContacts,
         deleteContact,

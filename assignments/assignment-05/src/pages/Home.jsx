@@ -18,7 +18,7 @@ const Home = () => {
                 </div>
             </div>
         </>
-    ); // <--- And close it here
+    );
 };
 
 export default Home;

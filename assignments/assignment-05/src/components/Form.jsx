@@ -18,7 +18,6 @@ const Form = ({ formData: initialData }) => {
         if (initialData) {
             setFormData(initialData);
         } else {
-            // Important: Reset form when adding a new contact
             setFormData({
                 fName: '',
                 lName: '',
@@ -31,7 +30,6 @@ const Form = ({ formData: initialData }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // Using function update is safer
         setFormData({
             ...formData,
             [name]: value,

@@ -15,7 +15,7 @@ export const usePagination = (
     }, [list, contactsPerPage]);
 
     const displayContacts = useMemo(() => {
-        // Safety check: ensure currentPage is a number
+        // ensure currentPage is a number
         const safePage = Number(currentPage) || 1;
         const start = (safePage - 1) * contactsPerPage;
         return list.slice(start, start + contactsPerPage);

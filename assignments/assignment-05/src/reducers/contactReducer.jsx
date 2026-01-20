@@ -13,7 +13,7 @@ export const initialState = {
     selectedContact: null,
     formData: { fName: '', lName: '', email: '', phone: '', address: '' },
 
-    // ✅ Single modal controller
+    // modal controller
     modalType: null, // 'details' | 'delete' | 'validation'
 
     validationError: '',
@@ -72,7 +72,7 @@ const contactReducer = (state, action) => {
         case 'SET_PAGE':
             return { ...state, currentPage: action.payload };
 
-        // ✅ Modals
+        // Modals
         case 'OPEN_MODAL':
             return {
                 ...state,
