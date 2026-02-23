@@ -25,7 +25,7 @@ const LogoutButton = ({ className = 'w-full', onLogout }) => {
     return (
         <button
             onClick={handleLogout}
-            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-lg transition-colors text-red-600 hover:bg-red-50 hover:text-red-700 font-medium ${className}`}
+            className={`flex items-center justify-center gap-3 px-4 py-3 rounded-lg transition-colors text-red-600 bg-red-50 hover:bg-red-200 hover:text-red-700 font-medium ${className}`}
         >
             <svg
                 className='w-5 h-5'

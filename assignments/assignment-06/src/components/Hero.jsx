@@ -25,24 +25,24 @@ const Hero = () => {
                             <div className='mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start'>
                                 <Link
                                     to='/dashboard'
-                                    className='px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5'
+                                    className='px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 w-full md:w-1/2 lg:w-1/3'
                                 >
                                     Dashboard
                                 </Link>
 
-                                <LogoutButton className='w-1/3' />
+                                <LogoutButton className='w-full md:w-1/2 lg:w-1/3' />
                             </div>
                         ) : (
                             <div className='mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start'>
                                 <Link
                                     to='/signin'
-                                    className='px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5'
+                                    className='px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 w-full md:w-1/2 lg:w-1/3 flex justify-center'
                                 >
                                     Login
                                 </Link>
                                 <Link
                                     to='/signup'
-                                    className='px-8 py-3.5 bg-white text-gray-700 border border-gray-200 font-semibold rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-300'
+                                    className='px-8 py-3.5 bg-white text-gray-700 border border-gray-200 font-semibold rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 w-full md:w-1/2 lg:w-1/3 flex justify-center'
                                 >
                                     Register
                                 </Link>

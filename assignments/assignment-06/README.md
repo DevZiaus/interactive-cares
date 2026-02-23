@@ -6,4 +6,4 @@
 
 [Live deployment link](https://devziaus-react-firebase-auth-system.netlify.app)
 
-[overview video link](Provide your assignment overview video link)
+[overview video link](https://youtu.be/LY3AjZtzDh0?si=sJYmxRSyKTWWt-Lt)
